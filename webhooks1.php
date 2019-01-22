@@ -46,3 +46,6 @@ $result = curl_exec($ch);
 curl_close ($ch);
  
 ?>
+
+<?php
+echo "Hello LINE BOT";?>
