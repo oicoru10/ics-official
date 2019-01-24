@@ -10,7 +10,10 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
-   $displayName = $arrayJson['events'][0]['source']['displayName'];
+
+   $chat_id = $arrayJson['result'][0]['message']['chat']['id'];
+   $first_name = $arrayJson['result'][0]['message']['chat']['first_name'];
+   $text = $arrayJson['result'][0]['message']['text'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี"){
@@ -20,7 +23,7 @@
       pushMsg($arrayHeader,$arrayPostData);
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $displayName;
+      $arrayPostData['messages'][0]['text'] = $first_name;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
