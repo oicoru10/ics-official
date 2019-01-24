@@ -12,14 +12,14 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    
    $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
-   $first_name = $arrayJson['events'][0]['message']['chat']['first_name'];
+   $first_name = $arrayJson['events'][0]['source']['first_name'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $first_name;
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $id . $first_name;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
