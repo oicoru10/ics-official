@@ -13,7 +13,8 @@
    if($message == "สวัสดี"){
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ";
+      $arrayPostData['messages'][0]['text'] = $id;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
