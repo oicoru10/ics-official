@@ -53,7 +53,16 @@
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = $result;
          pushMsg($arrayHeader,$arrayPostData);
-       }
+         
+         foreach ($arrayJson as $item)
+         {
+            $arrayPostData['to'] = $id;
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = $item->name . " " . $item->value;
+            pushMsg($arrayHeader,$arrayPostData);
+            //echo $item->name . " " . $item->value . “<br>”;
+         }
+        }
       else
       {
          $arrayPostData['to'] = $id;
