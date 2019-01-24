@@ -30,9 +30,13 @@ echo "<BR>";
    //echo $value->productId; // epIJp9
    //echo $value->name; // Product A
 //}
- $json_string = '[' . $result . ']';
+$json_string = '[' . $result . ']';
 $array = json_decode($json_string);
 
-echo $array['displayName'][0];
+$data =json_encode($array);
+$json='apiBlockTicketRequest:'.$data;
+echo $json;
+$display = $array['displayName'];
+echo $display;
 
 ?>
