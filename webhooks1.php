@@ -60,8 +60,8 @@
       
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "image";
-      $arrayPostData['messages'][0]['contentProvider.type'] = "external";
-      $arrayPostData['messages'][0]['contentProvider.originalContentUrl'] = $pic;
+      $arrayPostData['messages'][0]['contentProvider']['type'] = "external";
+      $arrayPostData['messages'][0]['contentProvider']['originalContentUrl'] = $pic;
       pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
@@ -121,13 +121,13 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
     }
-   ELSE
-     {
-      $arrayPostData['to'] = $idTo;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
-      pushMsg($arrayHeader,$arrayPostData);
-    }
+ //  ELSE
+    // {
+     // $arrayPostData['to'] = $idTo;
+      //$arrayPostData['messages'][0]['type'] = "text";
+     // $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
+      //pushMsg($arrayHeader,$arrayPostData);
+    //}
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
