@@ -8,6 +8,7 @@
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    
    $type = $arrayJson['events'][0]['type'];
+   $replyToken = $arrayJson['events'][0]['type']['replyToken'];
    //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
@@ -56,7 +57,7 @@
    }
    elseif($type == "join")
    {
-      $arrayPostData['to'] = $idTo;
+      $arrayPostData['to'] = $replyToken;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา ทุกโคนนน";
    }
@@ -116,6 +117,12 @@
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "Type : " . $type;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+            
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "replyToken : " . $replyToken;
          pushMsg($arrayHeader,$arrayPostData);
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
