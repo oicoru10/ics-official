@@ -32,12 +32,7 @@ echo "<BR>";
 //}
  $json_string = '[' . $result . ']';
 $array = json_decode($json_string);
-foreach ($array as $value)
-{
-   echo $value->displayName; // epIJp9
-}
 
-echo count($array);
-print_r($array);
+echo $array[displayName];
 
 ?>
