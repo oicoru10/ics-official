@@ -48,12 +48,14 @@
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
+      pushMsg($arrayHeader,$arrayPostData);
    }
    elseif($type == "unfollow")
    {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "ม่ายยยย";
+      pushMsg($arrayHeader,$arrayPostData);
    }
    elseif($type == "join")
    {
@@ -61,12 +63,22 @@
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา ทุกโคนนน";
    }
-   
+         
+         
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "Type : " . $type;
          pushMsg($arrayHeader,$arrayPostData);
          
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
+         pushMsg($arrayHeader,$arrayPostData);
             
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
@@ -79,7 +91,6 @@
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
-      
       pushMsg($arrayHeader,$arrayPostData);
       
       $arrayPostData['to'] = $idTo;
@@ -113,6 +124,11 @@
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "ข้อมูลที่ดึงได้";
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "๊UserID : " . $id;
          pushMsg($arrayHeader,$arrayPostData);
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
