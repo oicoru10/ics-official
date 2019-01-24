@@ -34,14 +34,14 @@
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
-      $arrayPostData['messages'][1]['type'] = "sticker";
-      $arrayPostData['messages'][1]['packageId'] = "2";
-      $arrayPostData['messages'][1]['stickerId'] = "34";
-      pushMsg($arrayHeader,$arrayPostData);
-      
-      $arrayPostData['to'] = $id;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $status;
+      $arrayPostData['messages'][2]['type'] = "sticker";
+      $arrayPostData['messages'][2]['packageId'] = "2";
+      $arrayPostData['messages'][2]['stickerId'] = "34";
+      $arrayPostData['messages'][3]['type'] = "text";
+      $arrayPostData['messages'][3]['text'] = $status;
+      $arrayPostData['messages'][4]['type'] = "image";
+      $arrayPostData['messages'][4]['contentProvider.type'] = "external";
+      $arrayPostData['messages'][4]['contentProvider.originalContentUrl	'] = $pic;
       pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
