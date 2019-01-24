@@ -9,15 +9,27 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
+   
+$bot = new \LINE\LINEBot(new CurlHTTPClient('/DJOA67LCUK/1Wt/YlQBhgRvCQh/bTA2H+6Oc9c2yt3N2YObVEgFXxlAw7/CCx5bY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAiL9aFvsbNQV7eSlUBsTxWGhClOjBwfeAWgYnHov9/7aQdB04t89/1O/w1cDnyilFU='), [
+    'channelSecret' => 'ef410ca44d0502656720084f014c53fa' ]);
+
+$res = $bot->getProfile('user-id');
+if ($res->isSucceeded()) {
+    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
+}
+
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี"){
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ";
-      $arrayPostData['messages'][0]['text'] = $id;
-      $arrayPostData['messages'][1]['type'] = "sticker";
-      $arrayPostData['messages'][1]['packageId'] = "2";
-      $arrayPostData['messages'][1]['stickerId'] = "34";
+      $arrayPostData['messages'][1]['text'] = $displayName;
+      $arrayPostData['messages'][2]['type'] = "sticker";
+      $arrayPostData['messages'][2]['packageId'] = "2";
+      $arrayPostData['messages'][2]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
    }ELSEif($message == "นับ 1-10"){
        for($i=1;$i<=10;$i++){
