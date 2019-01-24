@@ -18,13 +18,22 @@
    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
    $result = curl_exec($ch);
    curl_close($ch);
-   $Profile = explode('"', $result, -1);
+   $json_string = '[' . $result . ']';
+   $Profile = json_decode($json_string);
+   $jsData = 'DATA:' . $arrayJson;
+   foreach ($Profile as $value)
+   {
+      $DisplayName = $value->displayName;
+      $pic = $value->pictureUrl;
+      $status = $value->statusMessage;
+   }
+   
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $Profile[7];
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
@@ -49,19 +58,15 @@
          $arrayPostData['messages'][0]['text'] = "ข้อมูลที่ดึงได้";
          pushMsg($arrayHeader,$arrayPostData);
          
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = $result;
-         pushMsg($arrayHeader,$arrayPostData);
+         //$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         //$arrayPostData['messages'][0]['type'] = "text";
+         //$arrayPostData['messages'][0]['text'] = $result;
+         //pushMsg($arrayHeader,$arrayPostData);
          
-         foreach ($arrayJson as $item)
-         {
             $arrayPostData['to'] = $id;
             $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $item->name . " " . $item->value;
+            $arrayPostData['messages'][0]['text'] = $jsData;
             pushMsg($arrayHeader,$arrayPostData);
-            //echo $item->name . " " . $item->value . “<br>”;
-         }
         }
       else
       {
