@@ -14,12 +14,12 @@
    $id_r = $arrayJson['events'][0]['source']['roomId'];
    
    $idTo = $id.
-   if($id_g !== null)
+   if(!is_null($id_g))
    {
       $idTo = $id_g;
    }
    
-   if($id_r !== null)
+   if(!is_null($id_r))
    {
       $idTo = $id_r;
    }
