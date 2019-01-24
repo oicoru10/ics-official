@@ -10,7 +10,8 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
-  
+   $id_g = $arrayJson['events'][0]['source']['groupId'];
+   $id_r = $arrayJson['events'][0]['source']['roomId'];
    $url = 'https://api.line.me/v2/bot/profile/'.$id;
    $ch = curl_init($url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -61,6 +62,10 @@
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "ข้อมูลที่ดึงได้";
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = $id_g;
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = $id_r;
          pushMsg($arrayHeader,$arrayPostData);
          
          //$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
