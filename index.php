@@ -21,7 +21,7 @@ curl_close($ch);
 //echo "<BR>";
 //echo 'test';
 echo "<BR>";
-$json = '[{"var1":"9","var2":"16","var3":"16"},{"var1":"8","var2":"15","var3":"15"}]';
+$json = "[{"var1":"9","var2":"16","var3":"16"},{"var1":"8","var2":"15","var3":"15"}]";
 $data = json_decode($json);
 
 var_dump($data[0]['var1']); // outputs '9'
