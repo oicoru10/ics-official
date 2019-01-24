@@ -20,7 +20,7 @@
    curl_close($ch);
    $json_string = '[' . $result . ']';
    $Profile = json_decode($json_string);
-   $jsData = 'DATA:' . $arrayJson;
+   $jsData = 'DATA:' . $arrayJson['events'][0];
    foreach ($Profile as $value)
    {
       $DisplayName = $value->displayName;
@@ -37,6 +37,11 @@
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
+      pushMsg($arrayHeader,$arrayPostData);
+      
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = $status;
       pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
