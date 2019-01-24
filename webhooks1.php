@@ -12,7 +12,7 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    
    $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
-   $first_name = $arrayJson['events'][0]['source']['first_name'];
+   $first_name = $arrayJson['events'][0]['source'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
@@ -35,16 +35,15 @@
        }
      }
    ELSEif($message == "ดึงข้อมูล")
-      if($id == 'U1433d8e7fabdefa79463b15e1924b4d0')
-      {
+      if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
+       {
          $user_id = $jsondata['events']['contact']['user_id'];
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = $chat_id;
+         $arrayPostData['messages'][0]['text'] = $first_name;
          pushMsg($arrayHeader,$arrayPostData);
-      }
-      
+       }
    else
      {
       $arrayPostData['to'] = $id;
