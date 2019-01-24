@@ -17,11 +17,13 @@
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ";
-      $arrayPostData['messages'][1]['type'] = "text";
-      $arrayPostData['messages'][1]['text'] = $displayName;
-      $arrayPostData['messages'][2]['type'] = "sticker";
-      $arrayPostData['messages'][2]['packageId'] = "2";
-      $arrayPostData['messages'][2]['stickerId'] = "34";
+      pushMsg($arrayHeader,$arrayPostData);
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = $displayName;
+      $arrayPostData['messages'][1]['type'] = "sticker";
+      $arrayPostData['messages'][1]['packageId'] = "2";
+      $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
    }ELSEif($message == "นับ 1-10"){
        for($i=1;$i<=10;$i++){
