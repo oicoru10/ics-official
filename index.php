@@ -11,5 +11,17 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
+echo "<BR>";
 print_r(explode('"', $result, -1));
+echo "<BR>";
+$array = json_decode( $result, true );
+$testname = $array[0]["displayName"];
+echo $testname;
+
+echo "<BR>";
+$json = '[{"var1":"9","var2":"16","var3":"16"},{"var1":"8","var2":"15","var3":"15"}]';
+$data = json_decode($json);
+
+var_dump($data[0]['var1']); // outputs '9'
+var_dump($data[1]['var1']);
 ?>
