@@ -47,7 +47,6 @@
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
        {
-         $user_id = $jsondata['events']['contact']['user_id'];
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "ข้อมูลที่ดึงได้";
@@ -55,7 +54,7 @@
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = $first_name;
+         $arrayPostData['messages'][0]['text'] = $result;
          pushMsg($arrayHeader,$arrayPostData);
        }
       else
@@ -63,6 +62,16 @@
          $arrayPostData['to'] = $id;
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "คุณไม่มีสิทธิ์";
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "มีคนดึงข้อมูล";
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = $result;
          pushMsg($arrayHeader,$arrayPostData);
       }
     }
