@@ -6,6 +6,8 @@
    $arrayHeader = array();
    $arrayHeader[] = "Content-Type: application/json";
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   
+   $type = $arrayJson['events'][0]['type'];
    //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
@@ -40,7 +42,19 @@
       $pic = $value->pictureUrl;
       $status = $value->statusMessage;
    }
-   
+   if($type = "follow")
+   {
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
+   }
+   elseif($type = "unfollow")
+   {
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "ม่ายยยย";
+   }
+      
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
