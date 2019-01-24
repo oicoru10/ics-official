@@ -21,9 +21,15 @@ curl_close($ch);
 //echo "<BR>";
 //echo 'test';
 echo "<BR>";
-$json = "[{"var1":"9","var2":"16","var3":"16"},{"var1":"8","var2":"15","var3":"15"}]";
-$data = json_decode($json);
+$json_string = '[{"productId":"epIJp9","name":"Product A","amount":"5","identifier":"242"},{"productId":"a93fHL","name":"Product B","amount":"2","identifier":"985"}]';
 
-var_dump($data[0]['var1']); // outputs '9'
-var_dump($data[1]['var1']);
+$array = json_decode($json_string);
+
+foreach ($array as $value)
+{
+   echo $value->productId; // epIJp9
+   echo $value->name; // Product A
+}
+
+
 ?>
