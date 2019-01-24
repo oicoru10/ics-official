@@ -64,27 +64,15 @@
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา ทุกโคนนน";
       pushMsg($arrayHeader,$arrayPostData);
    }
-         
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "Type : " . $type;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
-         pushMsg($arrayHeader,$arrayPostData);
-            
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "replyToken : " . $replyToken;
-         pushMsg($arrayHeader,$arrayPostData);
+   elseif($type == "memberJoined")
+   {
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "ยินดีตอนรับน้าาาา";
+      pushMsg($arrayHeader,$arrayPostData);
+   }
+   elseif($type == "message")
+   {   
       
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
@@ -117,6 +105,15 @@
           $arrayPostData['messages'][0]['text'] = $i;
           pushMsg($arrayHeader,$arrayPostData);
        }
+     }
+   ELSEIF($message == "ลา")
+      {
+          $arrayPostData['to'] = $idTo;
+          $arrayPostData['messages'][0]['type'] = "text";
+          $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
+          $arrayPostData['messages'][0]['quickReply'] = "เลือกประเภทลา";
+          $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
+          pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF($message == "ดึงข้อมูล")
     {
@@ -183,6 +180,7 @@
      // $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
       //pushMsg($arrayHeader,$arrayPostData);
     //}
+   }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
