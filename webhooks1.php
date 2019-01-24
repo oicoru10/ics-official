@@ -11,34 +11,50 @@
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
    
-   echo "<pre>";
-      var_dump($arrayJson);
-   echo "</pre>";   
-
    $chat_id = $arrayJson['result'][0]['message']['chat']['id'];
    $first_name = $arrayJson['result'][0]['message']['chat']['first_name'];
    $text = $arrayJson['result'][0]['message']['text'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
-   if($message == "สวัสดี"){
+   if($message == "สวัสดี")
+    {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ";
-      pushMsg($arrayHeader,$arrayPostData);
-      $arrayPostData['to'] = $id;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $first_name;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
-   }ELSEif($message == "นับ 1-10"){
+    }
+   ELSEif($message == "นับ 1-10")
+      {
        for($i=1;$i<=10;$i++){
           $arrayPostData['to'] = $id;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $i;
           pushMsg($arrayHeader,$arrayPostData);
        }
+     }
+   ELSEif($message == "ดึงข้อมูล")
+      if($id == 'U1433d8e7fabdefa79463b15e1924b4d0')
+      {
+         $user_id = $jsondata['result']['contact']['user_id'];
+         foreach ($arrayJson as $key=>$item)
+        {
+          
+          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+          $arrayPostData['messages'][0]['type'] = "text";
+          $arrayPostData['messages'][0]['text'] = $user_id;
+          pushMsg($arrayHeader,$arrayPostData);
+        }
+      }
+      
+   else
+     {
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
+      pushMsg($arrayHeader,$arrayPostData);
     }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
