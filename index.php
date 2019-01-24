@@ -36,4 +36,8 @@ foreach ($array as $value)
 {
    echo $value->displayName; // epIJp9
 }
+
+echo count($array);
+print_r($array);
+
 ?>
