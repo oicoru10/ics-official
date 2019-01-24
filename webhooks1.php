@@ -13,7 +13,7 @@
    $id_g = $arrayJson['events'][0]['source']['groupId'];
    $id_r = $arrayJson['events'][0]['source']['roomId'];
    
-   $idTo = $id.
+   $idTo = $id;
    if(!is_null($id_g))
    {
       $idTo = $id_g;
