@@ -10,9 +10,11 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
+   
    echo "<pre>";
-    print_r($arrayJson);
-   echo "</pre><br>";
+      var_dump($arrayJson);
+   echo "</pre>";   
+
    $chat_id = $arrayJson['result'][0]['message']['chat']['id'];
    $first_name = $arrayJson['result'][0]['message']['chat']['first_name'];
    $text = $arrayJson['result'][0]['message']['text'];
