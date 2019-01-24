@@ -12,11 +12,12 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 echo "<BR>";
-print_r(explode('"', $result, -1));
+$ar = explode('"', $result, -1);
+var_dump($ar);
 echo "<BR>";
-$array = json_decode( $result, true );
-$testname = $array[0]["displayName"];
-echo $testname;
+$array = json_decode( $result);
+$testname = $array[0]['displayName'];
+echo $testname . "test";
 
 echo "<BR>";
 $json = '[{"var1":"9","var2":"16","var3":"16"},{"var1":"8","var2":"15","var3":"15"}]';
