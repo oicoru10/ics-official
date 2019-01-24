@@ -12,29 +12,31 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    
    $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
-   $first_name = $arrayJson['events'][0]['source'];
+   $first_name = $arrayJson['events'][0]['source']['useName'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $id . $first_name;
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $first_name;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
     }
-   ELSEif($message == "นับ 1-10")
+   ELSEIF($message == "นับ 1-10")
       {
-       for($i=1;$i<=10;$i++){
+       for($i=1;$i<=10;$i++)
+       {
           $arrayPostData['to'] = $id;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $i;
           pushMsg($arrayHeader,$arrayPostData);
        }
      }
-   ELSEif($message == "ดึงข้อมูล")
+   ELSEIF($message == "ดึงข้อมูล")
+    {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
        {
          $user_id = $jsondata['events']['contact']['user_id'];
@@ -44,7 +46,8 @@
          $arrayPostData['messages'][0]['text'] = $first_name;
          pushMsg($arrayHeader,$arrayPostData);
        }
-   else
+    }
+   ELSE
      {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
