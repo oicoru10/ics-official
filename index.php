@@ -33,6 +33,6 @@ echo "<BR>";
  $json_string = '[' . $result . ']';
 $array = json_decode($json_string);
 
-echo $array[displayName];
+echo $array->displayName;
 
 ?>
