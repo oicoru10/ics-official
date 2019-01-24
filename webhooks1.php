@@ -12,7 +12,7 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    
    $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
-   $first_name = $arrayJson['events'][0]['source']['Name'];
+   $first_name = $arrayJson['events'][0]['source']['displayName'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
