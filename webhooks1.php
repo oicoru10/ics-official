@@ -1,5 +1,6 @@
 <?php
    $accessToken = "/DJOA67LCUK/1Wt/YlQBhgRvCQh/bTA2H+6Oc9c2yt3N2YObVEgFXxlAw7/CCx5bY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAiL9aFvsbNQV7eSlUBsTxWGhClOjBwfeAWgYnHov9/7aQdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
+   $channelSecret = "ef410ca44d0502656720084f014c53fa";
    $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
    $arrayHeader = array();
@@ -9,17 +10,7 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
-   
-$bot = new \LINE\LINEBot(new CurlHTTPClient('/DJOA67LCUK/1Wt/YlQBhgRvCQh/bTA2H+6Oc9c2yt3N2YObVEgFXxlAw7/CCx5bY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAiL9aFvsbNQV7eSlUBsTxWGhClOjBwfeAWgYnHov9/7aQdB04t89/1O/w1cDnyilFU='), [
-    'channelSecret' => 'ef410ca44d0502656720084f014c53fa' ]);
-
-$res = $bot->getProfile($id);
-if ($res->isSucceeded()) {
-    $profile = $res->getJSONDecodedBody();
-    $displayName = $profile['displayName'];
-    $statusMessage = $profile['statusMessage'];
-    $pictureUrl = $profile['pictureUrl'];
-}
+   $displayName = $arrayJson['events'][0]['source']['displayName'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี"){
