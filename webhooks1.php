@@ -42,17 +42,23 @@
       $pic = $value->pictureUrl;
       $status = $value->statusMessage;
    }
-   if($type = "follow")
+   if($type == "follow")
    {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
    }
-   elseif($type = "unfollow")
+   elseif($type == "unfollow")
    {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "ม่ายยยย";
+   }
+   elseif($type == "join")
+   {
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา ทุกโคนนน";
    }
       
    #ตัวอย่าง Message Type "Text + Sticker"
