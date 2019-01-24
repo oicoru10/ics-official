@@ -14,6 +14,14 @@
    $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
    $first_name = $arrayJson['events'][0]['source']['displayName'];
 
+   $url = 'https://api.line.me/v2/bot/profile/'.$id;
+   $ch = curl_init($url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+   $result = curl_exec($ch);
+   curl_close($ch);
+   $first_name = $result['displayName'][0];
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
