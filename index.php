@@ -30,7 +30,8 @@ echo "<BR>";
    //echo $value->productId; // epIJp9
    //echo $value->name; // Product A
 //}
-$array = json_decode($result);
+ $json_string = '[' . $result . ']';
+$array = json_decode($json_string);
 foreach ($array as $value)
 {
    echo $value->displayName; // epIJp9
