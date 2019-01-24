@@ -11,16 +11,15 @@
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
    
-   $chat_id = $arrayJson['result'][0]['message']['chat']['id'];
-   $first_name = $arrayJson['result'][0]['message']['chat']['first_name'];
-   $text = $arrayJson['result'][0]['message']['text'];
+   $chat_id = $arrayJson['events'][0]['message']['chat']['id'];
+   $first_name = $arrayJson['events'][0]['message']['chat']['first_name'];
 
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ" . $first_name;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
@@ -38,15 +37,12 @@
    ELSEif($message == "ดึงข้อมูล")
       if($id == 'U1433d8e7fabdefa79463b15e1924b4d0')
       {
-         $user_id = $jsondata['result']['contact']['user_id'];
-         foreach ($arrayJson as $key=>$item)
-        {
-          
-          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-          $arrayPostData['messages'][0]['type'] = "text";
-          $arrayPostData['messages'][0]['text'] = $user_id;
-          pushMsg($arrayHeader,$arrayPostData);
-        }
+         $user_id = $jsondata['events']['contact']['user_id'];
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = $chat_id;
+         pushMsg($arrayHeader,$arrayPostData);
       }
       
    else
