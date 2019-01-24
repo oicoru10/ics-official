@@ -59,9 +59,10 @@
    }
    elseif($type == "join")
    {
-      $arrayPostData['to'] = $replyToken;
+      $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา ทุกโคนนน";
+      pushMsg($arrayHeader,$arrayPostData);
    }
          
          
