@@ -12,6 +12,18 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    $id_g = $arrayJson['events'][0]['source']['groupId'];
    $id_r = $arrayJson['events'][0]['source']['roomId'];
+   
+   $idTo = $id.
+   if($id_g <> "")
+   {
+      $idTo = $id_g;
+   }
+   
+   if($id_r <> "")
+   {
+      $idTo = $id_r;
+   }
+
    $url = 'https://api.line.me/v2/bot/profile/'.$id;
    $ch = curl_init($url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -32,30 +44,31 @@
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี")
     {
-      $arrayPostData['to'] = $id;
+      $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+      
+      pushMsg($arrayHeader,$arrayPostData);
+      
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = $status;
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
       
-      $arrayPostData['to'] = $id;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $status;
-      pushMsg($arrayHeader,$arrayPostData);
-      
-      $arrayPostData['to'] = $id;
+      $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "image";
       $arrayPostData['messages'][0]['contentProvider.type'] = "external";
-      $arrayPostData['messages'][0]['contentProvider.originalContentUrl	'] = $pic;
+      $arrayPostData['messages'][0]['contentProvider.originalContentUrl'] = $pic;
       pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
       {
        for($i=1;$i<=10;$i++)
        {
-          $arrayPostData['to'] = $id;
+          $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $i;
           pushMsg($arrayHeader,$arrayPostData);
@@ -85,14 +98,14 @@
          //$arrayPostData['messages'][0]['text'] = $result;
          //pushMsg($arrayHeader,$arrayPostData);
          
-            $arrayPostData['to'] = $id;
+            $arrayPostData['to'] = $idTo;
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = $jsData;
             pushMsg($arrayHeader,$arrayPostData);
         }
       else
       {
-         $arrayPostData['to'] = $id;
+         $arrayPostData['to'] = $idTo;
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "คุณไม่มีสิทธิ์";
          pushMsg($arrayHeader,$arrayPostData);
@@ -110,7 +123,7 @@
     }
    ELSE
      {
-      $arrayPostData['to'] = $id;
+      $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
       pushMsg($arrayHeader,$arrayPostData);
