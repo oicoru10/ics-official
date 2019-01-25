@@ -92,8 +92,8 @@
       
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "image";
-      $arrayPostData['messages'][0]['contentProvider']['type'] = "external";
-      $arrayPostData['messages'][0]['contentProvider']['originalContentUrl'] = $pic;
+      $arrayPostData['messages'][0]['originalContentUrl']= $pic;
+      $arrayPostData['messages'][0]['previewImageUrl'] = $pic;
       pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
