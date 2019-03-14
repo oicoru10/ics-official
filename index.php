@@ -37,12 +37,12 @@ $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา
 $arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
 $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
 $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "message";
-&arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
+$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
 
 // $json_string = '[' . $result . ']';
 // $array = json_decode($json_string);
 
-$data =json_encode($&arraypostdata);
+$data =json_encode($arraypostdata);
 $json='apiBlockTicketRequest:'.$data;
 echo $json;
 $display = $array['displayName'];
