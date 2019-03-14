@@ -118,18 +118,18 @@
           // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
           // ReplyMsg($arrayHeader,$arrayPostData);
 		  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  $arrayPostData['messages'][0]['type'] = "text";
-		  $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
-		  $arrayPostData['messages'][1]['type'] = "sticker";
-		  $arrayPostData['messages'][1]['packageId'] = "1";
-		  $arrayPostData['messages'][1]['stickerId'] = "131";
-		  $arraypostdata['messages'][2]['type'] = "text";
-          $arraypostdata['messages'][2]['text'] = "เลือกประเภทลา";
-          $arraypostdata['messages'][2]['quickReply']['items'][0]['type'] = "action";
-          $arraypostdata['messages'][2]['quickReply']['items'][0]['action']['type'] = "postback";
-          $arraypostdata['messages'][2]['quickReply']['items'][0]['action']['label'] = "Postback";
-          $arraypostdata['messages'][2]['quickReply']['items'][0]['action']['data'] = "action=buy&itemid=123";
-          $arraypostdata['messages'][2]['quickReply']['items'][0]['action']['displayText'] = "Buy";
+		  // $arrayPostData['messages'][0]['type'] = "text";
+		  // $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
+		  // $arrayPostData['messages'][1]['type'] = "sticker";
+		  // $arrayPostData['messages'][1]['packageId'] = "1";
+		  // $arrayPostData['messages'][1]['stickerId'] = "131";
+		  $arraypostdata['messages'][0]['type'] = "text";
+          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['data'] = "action=buy&itemid=123";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['displayText'] = "Buy";
 		  replyMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
