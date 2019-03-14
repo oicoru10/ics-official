@@ -111,11 +111,8 @@
           $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-          pushMsg($arrayHeader,$arrayPostData);
-		  
-		  $arrayPostData['to'] = $idTo;
-          $arrayPostData['messages'][0]['type'] = "text";
-          $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
+          $arrayPostData['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          $arrayPostData['messages'][0]['quickReply']['items'][0]['action'] = "ลาป่วย";
           pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
@@ -129,7 +126,7 @@
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "๊UserID : " . $id;
+         $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
          pushMsg($arrayHeader,$arrayPostData);
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
@@ -184,6 +181,9 @@
       pushMsg($arrayHeader,$arrayPostData);
     }
    }
+   
+   
+   
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
