@@ -123,6 +123,7 @@ $str = '{
 	
 	$json = json_decode($str, true);
 	echo $json;
+	print_r($array);
 // $display = $array['displayName'];
 // echo $display;
 
