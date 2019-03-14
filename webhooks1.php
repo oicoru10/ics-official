@@ -111,8 +111,10 @@
           $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-          // $arrayPostData['messages'][0]['quickReply']['items'][0]['type'] = "action";
-          // $arraypostdata['messages'][0]['quickreply']['items'][0]['action'] = "ลาป่วย";
+          $arrayPostData['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
+          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "Message";
+          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
           pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
