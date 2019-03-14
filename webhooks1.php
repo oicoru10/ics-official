@@ -116,8 +116,8 @@
           // $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "message";
           // $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
-		  var $js_string = ' { 
-					"to": "U1433d8e7fabdefa79463b15e1924b4d0",
+		  var $js_string = '[ { 
+				  "to": "U1433d8e7fabdefa79463b15e1924b4d0",
 				  "messages": [
 					{
 					  "type": "text",
@@ -180,7 +180,7 @@
 					  }
 					}
 				   ]
-				}	'.
+				} ] '.
 		  
 		  $arrayPostData = json_decode($json_string);
           pushMsg($arrayHeader,$arrayPostData);
