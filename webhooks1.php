@@ -178,7 +178,7 @@
 								  "data": "action=3&itemid=02",
 								  "displayText": "ลาพักร้อน"
 								}
-							  },
+							  }
 							]
 						  }
 						}
