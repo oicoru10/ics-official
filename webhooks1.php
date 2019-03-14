@@ -118,11 +118,18 @@
           // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
           // ReplyMsg($arrayHeader,$arrayPostData);
 		  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  $arrayPostData['messages'][0]['type'] = "text";
-		  $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
-		  $arrayPostData['messages'][1]['type'] = "sticker";
-		  $arrayPostData['messages'][1]['packageId'] = "1";
-		  $arrayPostData['messages'][1]['stickerId'] = "131";
+		  // $arrayPostData['messages'][0]['type'] = "text";
+		  // $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
+		  // $arrayPostData['messages'][1]['type'] = "sticker";
+		  // $arrayPostData['messages'][1]['packageId'] = "1";
+		  // $arrayPostData['messages'][1]['stickerId'] = "131";
+		  $arraypostdata['messages'][0]['type'] = "text";
+          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 		  replyMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
