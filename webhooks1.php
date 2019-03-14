@@ -1,5 +1,5 @@
 <?php
-   $accessToken = "/DJOA67LCUK/1Wt/YlQBhgRvCQh/bTA2H+6Oc9c2yt3N2YObVEgFXxlAw7/CCx5bY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAiL9aFvsbNQV7eSlUBsTxWGhClOjBwfeAWgYnHov9/7aQdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
+   $accessToken = "tpTjAZ5RC1rcUiqnVXDeVgdQJ0f+u0zf9MOYZQGlRlcEk64J6zH+QBpeZiJNjcfcY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAgiTvdNMoscrt8aCG3aAD1irfEQjjDY2o+52Oq74j0MmQdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
    $channelSecret = "ef410ca44d0502656720084f014c53fa";
    $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
@@ -75,7 +75,7 @@
    {   
       
    #ตัวอย่าง Message Type "Text + Sticker"
-   if( ( strpos($message, 'สวัสดี') != false )
+   if( ( strpos($message, 'สวัสดี') !== false )
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
@@ -106,16 +106,16 @@
           pushMsg($arrayHeader,$arrayPostData);
        }
      }
-   ELSEIF( strpos($message, 'ลางาน') != false )
+   ELSEIF( strpos($message, 'ลางาน') !== false )
       {
           $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-          $arrayPostData['messages'][0]['quickReply']['items'][0]['type'] = "action";
-          $arrayPostData['messages'][0]['quickReply']['items'][0]['action'] = "ลาป่วย";
+          // $arrayPostData['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          // $arraypostdata['messages'][0]['quickreply']['items'][0]['action'] = "ลาป่วย";
           pushMsg($arrayHeader,$arrayPostData);
      }
-   ELSEIF( strpos($message, 'ดึงข้อมูล') != false )
+   ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
        {
