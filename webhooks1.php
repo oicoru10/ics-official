@@ -113,12 +113,9 @@
           $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
           $arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
           $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
-          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "message";
+          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "Message";
           $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
-		  // var $js_string = '[ {  "to": "U1433d8e7fabdefa79463b15e1924b4d0", "messages": [ { "type": "text", "text": "Hello Quick Reply!", "quickReply": { "items": [ { "type": "action", "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png", "action": { "type": "message", "label": "Message", "text": "Hello World!" } }, { "type": "action", "action": { "type": "postback", "label": "Postback", "data": "action=buy&itemid=123", "displayText": "Buy" } }, { "type": "action", "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png", "action": { "type": "datetimepicker", "min": "2018-08-01t00:00" } } ] } } ] } ] '.
-		  
-		  // $arrayPostData = json_decode($js_string);
           pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
