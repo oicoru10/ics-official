@@ -119,14 +119,14 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          $arraypostdata['to'] = $idto;
+          // $arraypostdata['to'] = $idto;
           // $arraypostdata['messages'][0]['type'] = "text";
           // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
           
 		  
 		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  $arraypostdata['messages'][0]['type'] = "text";
-          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+		  // $arraypostdata['messages'][0]['type'] = "text";
+          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  
 		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
 		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
@@ -140,6 +140,11 @@
           // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
           // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 		  // // replyMsg($arrayHeader,$arrayPostData);
+		  // pushMsg($arrayHeader,$arrayPostData);
+		  
+		  $arrayPostData['to'] = $idTo;
+		  $arrayPostData['messages'][0]['type'] = "text";
+		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
 		  pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
