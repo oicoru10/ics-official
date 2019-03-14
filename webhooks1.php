@@ -119,12 +119,12 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          // $arraypostdata['to'] = $idto;
+          $arraypostdata['to'] = $idto;
           // $arraypostdata['messages'][0]['type'] = "text";
           // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-          // pushMsg($arrayHeader,$arrayPostData);
+          
 		  
-		  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		  $arraypostdata['messages'][0]['type'] = "text";
           $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  
@@ -139,7 +139,8 @@
           $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
           $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
           $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
-		  replyMsg($arrayHeader,$arrayPostData);
+		  // replyMsg($arrayHeader,$arrayPostData);
+		  pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
