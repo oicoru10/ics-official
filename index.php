@@ -46,13 +46,13 @@ $data = json_encode($arraypostdata);
 $json = 'apiBlockTicketRequest:'.$data;
 echo $json;
 
-$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+$arrayPostData1['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+$arrayPostData1['messages'][0]['type'] = "text";
+$arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
 echo "<BR>";
-$data = json_encode($arraypostdata);
-$json = 'apiBlockTicketRequest:'.$data;
-echo $json;
+$data1 = json_encode($arraypostdata1);
+$json1 = 'apiBlockTicketRequest:'.$data1;
+echo $json1;
 // $display = $array['displayName'];
 // echo $display;
 
