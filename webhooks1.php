@@ -75,7 +75,7 @@
    {   
       
    #ตัวอย่าง Message Type "Text + Sticker"
-   if( ( strpos($message, 'สวัสดี') !== false )
+   if( ( strpos($message, 'สวัสดี') != false )
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
@@ -106,7 +106,7 @@
           pushMsg($arrayHeader,$arrayPostData);
        }
      }
-   ELSEIF( strpos($message, 'ลางาน') !== false )
+   ELSEIF( strpos($message, 'ลางาน') != false )
       {
           $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
@@ -115,7 +115,7 @@
           $arrayPostData['messages'][0]['quickReply']['items'][0]['action'] = "ลาป่วย";
           pushMsg($arrayHeader,$arrayPostData);
      }
-   ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
+   ELSEIF( strpos($message, 'ดึงข้อมูล') != false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
        {
