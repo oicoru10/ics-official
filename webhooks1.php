@@ -125,13 +125,13 @@
           
 		  
 		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  // $arraypostdata['messages'][0]['type'] = "text";
-          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+		  $arraypostdata['messages'][0]['type'] = "text";
+          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  
 		  $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
 		  $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
 	      $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "ลาป่วย";
 		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
 		  $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
@@ -149,32 +149,16 @@
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "ข้อมูลที่ดึงได้";
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "Type : " . $type;
-         pushMsg($arrayHeader,$arrayPostData);
-         
-            
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "replyToken : " . $replyToken;
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = "UserID : " . $id;
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "GroupID : " . $id_g;
+         $arrayPostData['messages'][3]['type'] = "text";
+         $arrayPostData['messages'][3]['text'] = "RoomID : " .$id_r;
+         $arrayPostData['messages'][4]['type'] = "text";
+         $arrayPostData['messages'][4]['text'] = "Type : " . $type;
+         $arrayPostData['messages'][5]['type'] = "text";
+         $arrayPostData['messages'][5]['text'] = "replyToken : " . $replyToken;
          pushMsg($arrayHeader,$arrayPostData);
          
          $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
