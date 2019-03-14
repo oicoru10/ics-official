@@ -83,21 +83,29 @@
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+	  $arrayPostData['messages'][1]['type'] = "text";
+      $arrayPostData['messages'][1]['text'] = $status;
+      $arrayPostData['messages'][2]['type'] = "sticker";
+      $arrayPostData['messages'][2]['packageId'] = "2";
+      $arrayPostData['messages'][2]['stickerId'] = "34";
+	  $arrayPostData['messages'][3]['type'] = "image";
+      $arrayPostData['messages'][3]['originalContentUrl']= $pic;
+      $arrayPostData['messages'][3]['previewImageUrl'] = $pic;
       pushMsg($arrayHeader,$arrayPostData);
       
-      $arrayPostData['to'] = $idTo;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $status;
-      $arrayPostData['messages'][1]['type'] = "sticker";
-      $arrayPostData['messages'][1]['packageId'] = "2";
-      $arrayPostData['messages'][1]['stickerId'] = "34";
-      pushMsg($arrayHeader,$arrayPostData);
+      // $arrayPostData['to'] = $idTo;
+      // $arrayPostData['messages'][0]['type'] = "text";
+      // $arrayPostData['messages'][0]['text'] = $status;
+      // $arrayPostData['messages'][1]['type'] = "sticker";
+      // $arrayPostData['messages'][1]['packageId'] = "2";
+      // $arrayPostData['messages'][1]['stickerId'] = "34";
+      // pushMsg($arrayHeader,$arrayPostData);
       
-      $arrayPostData['to'] = $idTo;
-      $arrayPostData['messages'][0]['type'] = "image";
-      $arrayPostData['messages'][0]['originalContentUrl']= $pic;
-      $arrayPostData['messages'][0]['previewImageUrl'] = $pic;
-      pushMsg($arrayHeader,$arrayPostData);
+      // $arrayPostData['to'] = $idTo;
+      // $arrayPostData['messages'][0]['type'] = "image";
+      // $arrayPostData['messages'][0]['originalContentUrl']= $pic;
+      // $arrayPostData['messages'][0]['previewImageUrl'] = $pic;
+      // pushMsg($arrayHeader,$arrayPostData);
     }
    ELSEIF($message == "นับ 1-10")
       {
