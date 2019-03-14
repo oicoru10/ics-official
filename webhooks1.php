@@ -182,7 +182,7 @@
 				   ]
 				} ] '.
 		  
-		  $arrayPostData = json_decode($json_string);
+		  $arrayPostData = json_decode($js_string);
           pushMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
