@@ -45,6 +45,14 @@ $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ล
 $data = json_encode($arraypostdata);
 $json = 'apiBlockTicketRequest:'.$data;
 echo $json;
+
+$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+echo "<BR>";
+$data = json_encode($arraypostdata);
+$json = 'apiBlockTicketRequest:'.$data;
+echo $json;
 // $display = $array['displayName'];
 // echo $display;
 
