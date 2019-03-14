@@ -75,7 +75,7 @@
    {   
       
    #ตัวอย่าง Message Type "Text + Sticker"
-   if( ( strpos($message, 'สวัสดี') !== false )
+   if( strpos($message, 'สวัสดี') !== false )
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
