@@ -48,7 +48,7 @@ echo $json;
 
 $arrayPostData1['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
 $arrayPostData1['messages'][0]['type'] = "text";
-$arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+$arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าา คุณ ";
 echo "<BR>";
 $data1 = json_encode($arraypostdata1);
 $json1 = 'apiBlockTicketRequest:'.$data1;
