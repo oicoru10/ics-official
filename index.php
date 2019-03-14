@@ -1,6 +1,6 @@
 <?php
   echo "สวัสดี LINE BOT";
-
+echo "<BR>";
 $access_token = 'tpTjAZ5RC1rcUiqnVXDeVgdQJ0f+u0zf9MOYZQGlRlcEk64J6zH+QBpeZiJNjcfcY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAgiTvdNMoscrt8aCG3aAD1irfEQjjDY2o+52Oq74j0MmQdB04t89/1O/w1cDnyilFU=';
 $userid = 'u1433d8e7fabdefa79463b15e1924b4d0';
 $url = 'https://api.line.me/v2/bot/profile/'.$userid;
@@ -30,27 +30,22 @@ echo "<BR>";
    //echo $value->productId; // epIJp9
    //echo $value->name; // Product A
 //}
-$json_string = '[' . $result . ']';
-$array = json_decode($json_string);
 
-$data =json_encode($array);
+$arrayPostData['to'] = $idto;
+$arraypostdata['messages'][0]['type'] = "text";
+$arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+$arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
+$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
+$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "message";
+&arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
+
+// $json_string = '[' . $result . ']';
+// $array = json_decode($json_string);
+
+$data =json_encode($&arraypostdata);
 $json='apiBlockTicketRequest:'.$data;
 echo $json;
 $display = $array['displayName'];
 echo $display;
 
-$mystring = 'bc';
-$findme   = 'a';
-$pos = strpos($mystring, $findme);
-
-// Note our use of ===.  Simply == would not work as expected
-// because the position of 'a' was the 0th (first) character.
-echo "<BR>";
-if ($pos === false) {
-    echo "The string '$findme' was not found in the string '$mystring'";
-} else {
-    echo "The string '$findme' was found in the string '$mystring'";
-	echo "<BR>";
-    echo " and exists at position $pos";
-}
 ?>
