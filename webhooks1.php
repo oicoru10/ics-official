@@ -111,21 +111,23 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          $arraypostdata['to'] = $idto;
-          $arraypostdata['messages'][0]['type'] = "text";
-          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-          pushMsg($arrayHeader,$arrayPostData);
+          // $arraypostdata['to'] = $idto;
+          // $arraypostdata['messages'][0]['type'] = "text";
+          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+          // pushMsg($arrayHeader,$arrayPostData);
 		  
 		  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+		  $arraypostdata['messages'][0]['type'] = "text";
+          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
 	      $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "message";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
 		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
-          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "postback";
-          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Postback";
-          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['data'] = "action=buy&itemid=123";
-          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['displayText'] = "Buy";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 		  replyMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
