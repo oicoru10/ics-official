@@ -119,15 +119,16 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          $arrayPostData['to'] = $idTo;
-		  $arrayPostData['messages'][0]['type'] = "text";
-		  $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-		  pushMsg($arrayHeader,$arrayPostData);
+          // $arrayPostData['to'] = $idTo;
+		  // $arrayPostData['messages'][0]['type'] = "text";
+		  // $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
+		  // pushMsg($arrayHeader,$arrayPostData);
           
 		  
 		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  // $arraypostdata['messages'][0]['type'] = "text";
-          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+		  // $arrayPostData['to'] = $idTo;
+		  // $arrayPostData['messages'][0]['type'] = "text";
+		  // $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
 		  
 		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
 		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
@@ -148,61 +149,36 @@
 					  "messages": [
 						{
 						  "type": "text",
-						  "text": "Hello Quick Reply!",
+						  "text": "เลือกประเภทลา",
 						  "quickReply": {
 							"items": [
 							  {
 								"type": "action",
 								"action": {
-								  "type": "cameraRoll",
-								  "label": "Camera Roll"
+								  "type": "postback",
+								  "label": "ลาป่วย",
+								  "data": "action=1&itemid=00",
+								  "displayText": "ลาป่วย"
 								}
 							  },
-							  {
-								"type": "action",
-								"action": {
-								  "type": "camera",
-								  "label": "Camera"
-								}
-							  },
-							  {
-								"type": "action",
-								"action": {
-								  "type": "location",
-								  "label": "Location"
-								}
-							  },
-							  {
-								"type": "action",
-								"imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
-								"action": {
-								  "type": "message",
-								  "label": "Message",
-								  "text": "Hello World!"
-								}
-								},
 							  {
 								"type": "action",
 								"action": {
 								  "type": "postback",
-								  "label": "Postback",
-								  "data": "action=buy&itemid=123",
-								  "displayText": "Buy"
+								  "label": "ลากิจ",
+								  "data": "action=2&itemid=01",
+								  "displayText": "ลากิจ"
 								}
-								},
+							  },
 							  {
 								"type": "action",
-								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
 								"action": {
-								  "type": "datetimepicker",
-								  "label": "Datetime Picker",
-								  "data": "storeId=12345",
-								  "mode": "datetime",
-								  "initial": "2018-08-10t00:00",
-								  "max": "2018-12-31t23:59",
-								  "min": "2018-08-01t00:00"
+								  "type": "postback",
+								  "label": "ลาพักร้อน",
+								  "data": "action=3&itemid=02",
+								  "displayText": "ลาพักร้อน"
 								}
-							  }
+							  },
 							]
 						  }
 						}
