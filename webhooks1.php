@@ -125,20 +125,20 @@
           
 		  
 		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  $arraypostdata['messages'][0]['type'] = "text";
-          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+		  // $arraypostdata['messages'][0]['type'] = "text";
+          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  
-		  $arraypostdata['quickReply']['items'][0]['type'] = "action";
-		  $arraypostdata['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-	      $arraypostdata['quickReply']['items'][0]['action']['type'] = "message";
-		  $arraypostdata['quickReply']['items'][0]['action']['label'] = "Message";
-		  $arraypostdata['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+	      $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
-		  $arraypostdata['quickReply']['items'][1]['type'] = "action";
-          $arraypostdata['quickReply']['items'][1]['action']['type'] = "postback";
-          $arraypostdata['quickReply']['items'][1]['action']['label'] = "Postback";
-          $arraypostdata['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
-          $arraypostdata['quickReply']['items'][1]['action']['displayText'] = "Buy";
+		  $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
+          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 		  // replyMsg($arrayHeader,$arrayPostData);
 		  pushMsg($arrayHeader,$arrayPostData);
      }
