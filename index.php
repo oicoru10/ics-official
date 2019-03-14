@@ -31,35 +31,98 @@ echo "<BR>";
    //echo $value->name; // Product A
 //}
 
-$arraypostdata['messages'][0]['type'] = "text";
-$arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+// $arraypostdata['messages'][0]['type'] = "text";
+// $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 
-$arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
-$arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
-$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
+// $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+// $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 
-$arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
-$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
-$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
-$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
-$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
+// $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
+// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
+// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
+// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
+// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 
 // $json_string = '[' . $result . ']';
 // $array = json_decode($json_string);
 
-$data = json_encode($arraypostdata);
-$json = 'apiBlockTicketRequest:'.$data;
+// $data = json_encode($arraypostdata);
+// $json = 'apiBlockTicketRequest:'.$data;
+// echo $json;
+
 echo $json;
 
-$arrayPostData1['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-$arrayPostData1['messages'][0]['type'] = "text";
-$arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าา คุณ ";
-echo "<BR>";
-$data1 = json_encode($arraypostdata1);
-$json1 = 'apiBlockTicketRequest:'.$data1;
-echo $json1;
+$str = '{
+					  "to": "U1433d8e7fabdefa79463b15e1924b4d0",
+					  "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกประเภทลา",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"action": {
+								  "type": "cameraRoll",
+								  "label": "Camera Roll"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "camera",
+								  "label": "Camera"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "location",
+								  "label": "Location"
+								}
+							  },
+							  {
+								"type": "action",
+								"imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+								"action": {
+								  "type": "message",
+								  "label": "Message",
+								  "text": "Hello World!"
+								}
+								},
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "Postback",
+								  "data": "action=buy&itemid=123",
+								  "displayText": "Buy"
+								}
+								},
+							  {
+								"type": "action",
+								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								"action": {
+								  "type": "datetimepicker",
+								  "label": "Datetime Picker",
+								  "data": "storeId=12345",
+								  "mode": "datetime",
+								  "initial": "2018-08-10t00:00",
+								  "max": "2018-12-31t23:59",
+								  "min": "2018-08-01t00:00"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					}';
+	
+	$json = json_decode($str, true);
+	echo $json;
 // $display = $array['displayName'];
 // echo $display;
 
