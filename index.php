@@ -31,13 +31,20 @@ echo "<BR>";
    //echo $value->name; // Product A
 //}
 
-$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
 $arraypostdata['messages'][0]['type'] = "text";
 $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-$arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
-$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
-$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "message";
-$arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
+
+$arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+$arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+$arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
+
+$arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
+$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
+$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
+$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
+$arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 
 // $json_string = '[' . $result . ']';
 // $array = json_decode($json_string);
