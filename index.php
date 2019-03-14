@@ -31,7 +31,7 @@ echo "<BR>";
    //echo $value->name; // Product A
 //}
 
-$arrayPostData['to'] = $idto;
+$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
 $arraypostdata['messages'][0]['type'] = "text";
 $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 $arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
@@ -42,10 +42,10 @@ $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ล
 // $json_string = '[' . $result . ']';
 // $array = json_decode($json_string);
 
-$data =json_encode($arraypostdata);
-$json='apiBlockTicketRequest:'.$data;
+$data = json_encode($arraypostdata);
+$json = 'apiBlockTicketRequest:'.$data;
 echo $json;
-$display = $array['displayName'];
-echo $display;
+// $display = $array['displayName'];
+// echo $display;
 
 ?>
