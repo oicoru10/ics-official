@@ -112,6 +112,7 @@
           $arraypostdata['messages'][0]['type'] = "text";
           $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
           $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
           $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
           $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
           $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
