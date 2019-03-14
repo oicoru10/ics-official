@@ -1,7 +1,7 @@
 <?php
   echo "สวัสดี LINE BOT";
 
-$access_token = '/djoa67lcuk/1wt/ylqbhgrvcqh/bta2h+6oc9c2yt3n2yobvegfxxlaw7/ccx5by2r/8a25i+nuir5h1c1ft9gg7glkrjmtplsopvf7lail9afvsbnqv7eslubstxwghclojbwfeawgynhov9/7aqdb04t89/1o/w1cdnyilfu=';
+$access_token = 'tpTjAZ5RC1rcUiqnVXDeVgdQJ0f+u0zf9MOYZQGlRlcEk64J6zH+QBpeZiJNjcfcY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAgiTvdNMoscrt8aCG3aAD1irfEQjjDY2o+52Oq74j0MmQdB04t89/1O/w1cDnyilFU=';
 $userid = 'u1433d8e7fabdefa79463b15e1924b4d0';
 $url = 'https://api.line.me/v2/bot/profile/'.$userid;
 $headers = array('authorization: bearer ' . $access_token);
