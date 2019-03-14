@@ -75,7 +75,7 @@
    {   
       
    #ตัวอย่าง Message Type "Text + Sticker"
-   if($message == "สวัสดี")
+   if( ( strpos($message, 'สวัสดี') !== false )
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
@@ -106,16 +106,19 @@
           pushMsg($arrayHeader,$arrayPostData);
        }
      }
-   ELSEIF($message == "ลา")
+   ELSEIF( strpos($message, 'ลางาน') !== false )
       {
           $arrayPostData['to'] = $idTo;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-          $arrayPostData['messages'][0]['quickReply'] = "เลือกประเภทลา";
+          pushMsg($arrayHeader,$arrayPostData);
+		  
+		  $arrayPostData['to'] = $idTo;
+          $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
           pushMsg($arrayHeader,$arrayPostData);
      }
-   ELSEIF($message == "ดึงข้อมูล")
+   ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
        {
@@ -173,13 +176,13 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
     }
- //  ELSE
-    // {
-     // $arrayPostData['to'] = $idTo;
-      //$arrayPostData['messages'][0]['type'] = "text";
-     // $arrayPostData['messages'][0]['text'] = "ฉันไม่เข้าใจ";
-      //pushMsg($arrayHeader,$arrayPostData);
-    //}
+   ELSE
+     {
+      $arrayPostData['to'] = $idTo;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "ไม่มี Code ส่วนนี้อยู๋๋๋๋๋๋";
+      pushMsg($arrayHeader,$arrayPostData);
+    }
    }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
