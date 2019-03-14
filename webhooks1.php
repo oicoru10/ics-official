@@ -129,20 +129,20 @@
           $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
 		  pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $arraypostdata['to'] = $idto;
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-	      $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "ลาป่วย";
-		  $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
+		  $arraypostdata1['to'] = $idto;
+		  $arraypostdata1['messages'][0]['quickReply']['items'][0]['type'] = "action";
+		  $arraypostdata1['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+	      $arraypostdata1['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+		  $arraypostdata1['messages'][0]['quickReply']['items'][0]['action']['label'] = "ลาป่วย";
+		  $arraypostdata1['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
-		  $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
-          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
-          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
-          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
-          $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
+		  $arraypostdata1['messages'][0]['quickReply']['items'][1]['type'] = "action";
+          $arraypostdata1['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
+          $arraypostdata1['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
+          $arraypostdata1['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
+          $arraypostdata1['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
 		  // replyMsg($arrayHeader,$arrayPostData);
-		  pushMsg($arrayHeader,$arrayPostData);
+		  pushMsg($arrayHeader,$arrayPostData1);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
