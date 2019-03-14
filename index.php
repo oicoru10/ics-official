@@ -21,7 +21,7 @@ curl_close($ch);
 //echo "<BR>";
 //echo 'test';
 echo "<BR>";
-//$json_string = '[{"productId":"epIJp9","name":"Product A","amount":"5","identifier":"242"},{"productId":"a93fHL","name":"Product B","amount":"2","identifier":"985"}]';
+//$json_string = '[	{"productId":"epIJp9","name":"Product A","amount":"5","identifier":"242"},{"productId":"a93fHL","name":"Product B","amount":"2","identifier":"985"}]';
 
 //$array = json_decode($json_string);
 
