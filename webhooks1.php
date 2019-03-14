@@ -111,10 +111,10 @@
           $arraypostdata['to'] = $idto;
           $arraypostdata['messages'][0]['type'] = "text";
           $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-          $arraypostdata['messages'][0]['quickreply']['items'][0]['type'] = "action";
-          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['type'] = "message";
-          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['label'] = "Message";
-          $arraypostdata['messages'][0]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
+          $arraypostdata['messages'][1]['quickreply']['items'][0]['type'] = "action";
+          $arraypostdata['messages'][1]['quickreply']['items'][0]['action']['type'] = "message";
+          $arraypostdata['messages'][1]['quickreply']['items'][0]['action']['label'] = "Message";
+          $arraypostdata['messages'][1]['quickreply']['items'][0]['action']['text'] = "ลาป่วย";
 		  
           pushMsg($arrayHeader,$arrayPostData);
      }
