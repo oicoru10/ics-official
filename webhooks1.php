@@ -108,16 +108,22 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          $arraypostdata['to'] = $idto;
-          $arraypostdata['messages'][0]['type'] = "text";
-          $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-          $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
-          $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
-          $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
-		  
-          ReplyMsg($arrayHeader,$arrayPostData);
+          // $arraypostdata['to'] = $idto;
+          // $arraypostdata['messages'][0]['type'] = "text";
+          // $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
+          // $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
+          // $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
+          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
+          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
+          // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
+          // ReplyMsg($arrayHeader,$arrayPostData);
+		  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+		  $arrayPostData['messages'][0]['type'] = "text";
+		  $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
+		  $arrayPostData['messages'][1]['type'] = "sticker";
+		  $arrayPostData['messages'][1]['packageId'] = "1";
+		  $arrayPostData['messages'][1]['stickerId'] = "131";
+		  replyMsg($arrayHeader,$arrayPostData);
      }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
@@ -201,19 +207,20 @@
       $result = curl_exec($ch);
       curl_close ($ch);
    }
-   function ReplyMsg($arrayHeader,$arrayPostData){
-      $strUrl = "https://api.line.me/v2/bot/message/Reply";
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL,$strUrl);
-      curl_setopt($ch, CURLOPT_HEADER, false);
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-      $result = curl_exec($ch);
-      curl_close ($ch);
-   }
+   
+   function replyMsg($arrayHeader,$arrayPostData){
+        $strUrl = "https://api.line.me/v2/bot/message/reply";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);    
+        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($ch);
+        curl_close ($ch);
+    }
    exit;
    
    
