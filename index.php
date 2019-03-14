@@ -39,7 +39,7 @@ echo $json;
 $display = $array['displayName'];
 echo $display;
 
-$mystring = 'bac';
+$mystring = 'bc';
 $findme   = 'a';
 $pos = strpos($mystring, $findme);
 
