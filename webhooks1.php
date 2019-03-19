@@ -370,7 +370,7 @@
 	{	
 		$timestamp = $arrayJson['events'][0]['timestamp'];
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
-	    $date = $arrayJson['events'][0]['postback']['params']['datetime'];
+	    $datepick = $arrayJson['events'][0]['postback']['params']['datetime'];
 		
 		parse_str($Data_p);
 				
@@ -411,7 +411,7 @@
 		
 		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "date Pick : " . $date;
+        $arrayPostData['messages'][0]['text'] = "date Pick : " . $datepick;
         pushMsg($arrayHeader,$arrayPostData);
 		
 		switch ($action)
@@ -447,8 +447,8 @@
 				
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
-				replyMsg($arrayHeader,$arrayPostData);
+				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
+				pushMsg($arrayHeader,$arrayPostData);
 			// case 'Date_form';
 			
 				// $str = ' { "to": "'. $idTo . '",
