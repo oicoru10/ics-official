@@ -59,18 +59,19 @@ $username = "OOd1POc2ro";
 $password = "EtMy0i5bdp";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 echo "Connected successfully";
 // $display = $array['displayName'];
 // echo $display;
 // Create connection
  $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
-   $sql = "SELECT Id_line, Name FROM Member";
+   $sql = "SELECT Id_line,Name FROM Member";
    $result_sql = $conn->query($sql);
    if ($result_sql->num_rows > 0) {
 	   $row = $result_sql->fetch_assoc();
