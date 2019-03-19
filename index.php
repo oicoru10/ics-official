@@ -55,7 +55,7 @@ echo "<BR>";
 
 // echo $json;
 $servername = "remotemysql.com:3306";
-$username = "OOd1POc2ro11";
+$username = "OOd1POc2ro";
 $password = "EtMy0i5bdp";
 
 // Create connection
