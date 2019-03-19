@@ -451,7 +451,7 @@
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
 				pushMsg($arrayHeader,$arrayPostData);
-				
+				$datefrom = $datepick;
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
 						{
@@ -484,7 +484,7 @@
 			
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $datepick;
+				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่  :" . $datefrom . "ถึง วันที่ : " . $datepick;
 				pushMsg($arrayHeader,$arrayPostData);
 				break;
 				
