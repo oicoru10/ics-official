@@ -60,7 +60,7 @@
    if ($result_sql->num_rows > 0) {
     // output data of each row
     while($row = $result_sql->fetch_assoc()) {
-        // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+		$name_ = $row["Name"].
     }
    }
     $conn->close();
