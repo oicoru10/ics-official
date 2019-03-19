@@ -60,10 +60,6 @@ $password = "EtMy0i5bdp";
 $dbname = "OOd1POc2ro";
 
 // Create connection
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
-
-// Check connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
