@@ -297,6 +297,21 @@
 		$timestamp = $arrayJson['events'][0]['timestamp'];
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
 		
+		 $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
+         pushMsg($arrayHeader,$arrayPostData);
+		
 		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
 	    $arrayPostData['messages'][0]['type'] = "text";
 	    $arrayPostData['messages'][0]['text'] = "Type : " . $type;
