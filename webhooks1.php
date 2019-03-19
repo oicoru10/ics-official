@@ -443,14 +443,14 @@
 					   ]
 					}  ';
 				$json = json_decode($str, true);
-				replyMsg($arrayHeader,$json);
-			case 'Date_form';
-			
+				pushMsg($arrayHeader,$json);
+				
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
 				replyMsg($arrayHeader,$arrayPostData);
-				
+			case 'Date_form';
+			
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
 						{
@@ -477,12 +477,13 @@
 					   ]
 					}  ';
 				$json = json_decode($str, true);
-				replyMsg($arrayHeader,$json);
-			case 'Date_to';
+				pushMsg($arrayHeader,$json);
+				
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
 				replyMsg($arrayHeader,$arrayPostData);
+				
 		}
 		
 	}
