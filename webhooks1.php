@@ -444,6 +444,9 @@
 					}  ';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
+				
+			case 'Date_form';
+				
 				if( $datepick <> null)	
 				{
 					$arrayPostData['to'] = $idTo;
@@ -451,9 +454,6 @@
 					$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
 					pushMsg($arrayHeader,$arrayPostData);
 				}
-			case 'Date_form';
-				
-				
 				// $str = ' { "to": "'. $idTo . '",
 					 // "messages": [
 						// {
