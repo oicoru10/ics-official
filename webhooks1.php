@@ -358,7 +358,7 @@
 		{ 
 			case 'leave';
 				$str = ' { "to": "'. $idTo . '",
-					 "messages": [
+						   "messages": [
 						{
 						  "type": "text",
 						  "text": "เลือกวันลา(เริ่มต้น)",
@@ -383,7 +383,7 @@
 					   ]
 					}  ';
 				$json = json_decode($str, true);
-				replyMsg($arrayHeader,$json);
+				pushMsg($arrayHeader,$json);
 			case 'Date_form';
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
@@ -411,7 +411,7 @@
 					   ]
 					}  ';
 				$json = json_decode($str, true);
-				replyMsg($arrayHeader,$json);
+				pushMsg($arrayHeader,$json);
 			
 		}
 		
