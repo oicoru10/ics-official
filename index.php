@@ -70,7 +70,7 @@ echo "Connected successfully";
 // echo $display;
 // Create connection
  $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
-   $sql = "SELECT Id_line, Name FROM Member Where Id_line = '" . $idTo . "'";
+   $sql = "SELECT Id_line, Name FROM Member Where Id_line like '%" . $idTo . "%'";
    $result_sql = $conn->query($sql);
    if ($result_sql->num_rows > 0) {
 	   $row = $result_sql->fetch_assoc();
