@@ -353,7 +353,6 @@
 	    $date = $arrayJson['events'][0]['params']['datetime'];
 		
 		parse_str($Data_p);
-		// $Action = getQueryParameter($Data_p, 'action');
 		
 		switch ($action)
 		{ 
@@ -446,6 +445,10 @@
         $arrayPostData['messages'][0]['text'] = "data : " . $arrayJson['events'][0]['postback']['data'];
         pushMsg($arrayHeader,$arrayPostData);
 		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "action : " . $action;
+        pushMsg($arrayHeader,$arrayPostData);
 	}
    
 	
@@ -478,16 +481,6 @@
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-	
-	function getQueryParameter($url, $param) {
-    $parsedUrl = parse_url($url);
-    if (array_key_exists('query', $parsedUrl)) {
-        parse_str($parsedUrl['query'], $queryParameters);
-        if (array_key_exists($param, $queryParameters)) {
-            return $queryParameters[$param];
-        }
-    }
-}
 	
    exit;
    
