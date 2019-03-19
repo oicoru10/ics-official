@@ -52,8 +52,8 @@
    $conn = new mysqli($servername, $username, $password);
    $sql = "SELECT Id_line, Name FROM Member Where Id_line = '" . $idTo . "'";
    $result_sql = $conn->query($sql);
-   if ($result->num_rows > 0) {
-	   $row = $result->fetch_assoc();
+   if ($result_sql->num_rows > 0) {
+	   $row = $result_sql->fetch_assoc();
     // output data of each row
     // while($row = $result->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
