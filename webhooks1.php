@@ -81,7 +81,30 @@
 			VALUES ('" . $idTo . "', '" . $DisplayName . "')";
 
 	if ($conn->query($sql) === TRUE) {
+		$sql = "INSERT INTO `leave_number`(`Id_line`, `leave_id`, `number_leave`)
+			VALUES ('" . $idTo . "', '01', 30 )";
 		
+		if ($conn->query($sql) === TRUE) { } 
+		
+		$sql = "INSERT INTO `leave_number`(`Id_line`, `leave_id`, `number_leave`)
+			VALUES ('" . $idTo . "', '02', 2 )";
+		
+		if ($conn->query($sql) === TRUE) { } 
+		
+		$sql = "INSERT INTO `leave_number`(`Id_line`, `leave_id`, `number_leave`)
+			VALUES ('" . $idTo . "', '03', 15 )";
+		
+		if ($conn->query($sql) === TRUE) { } 
+		
+		$sql = "INSERT INTO `leave_number`(`Id_line`, `leave_id`, `number_leave`)
+			VALUES ('" . $idTo . "', '04', 0 )";
+		
+		if ($conn->query($sql) === TRUE) { } 
+		
+		$sql = "INSERT INTO `leave_number`(`Id_line`, `leave_id`, `number_leave`)
+			VALUES ('" . $idTo . "', '05', 0 )";
+		
+		if ($conn->query($sql) === TRUE) { } 
 	} 
 	$conn->close();
 		
@@ -187,27 +210,45 @@
 								"type": "action",
 								"action": {
 								  "type": "postback",
-								  "label": "ลาป่วย",
-								  "data": "action=leave&itemid=00",
-								  "displayText": "ลาป่วย"
+								  "label": "Sick Leave",
+								  "data": "action=leave&leaveid=01",
+								  "displayText": "Sick Leave"
 								}
 							  },
 							  {
 								"type": "action",
 								"action": {
 								  "type": "postback",
-								  "label": "ลากิจ",
-								  "data": "action=leave&itemid=01",
-								  "displayText": "ลากิจ"
+								  "label": " Personal Leave",
+								  "data": "action=leave&leaveid=02",
+								  "displayText": "Personal Leave"
 								}
 							  },
 							  {
 								"type": "action",
 								"action": {
 								  "type": "postback",
-								  "label": "ลาพักร้อน",
-								  "data": "action=leave&itemid=02",
-								  "displayText": "ลาพักร้อน"
+								  "label": "Annual Leave",
+								  "data": "action=leave&leaveid=03",
+								  "displayText": "Annual Leave"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "Compensate",
+								  "data": "action=leave&leaveid=04",
+								  "displayText": "Compensate"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": " Leave with out pay",
+								  "data": "action=leave&leaveid=05",
+								  "displayText": "Leave with out pay"
 								}
 							  }
 							]
@@ -374,49 +415,60 @@
 		
 		parse_str($Data_p);
 				
-		 $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
-         pushMsg($arrayHeader,$arrayPostData);
+		 // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         // $arrayPostData['messages'][0]['type'] = "text";
+         // $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
+         // pushMsg($arrayHeader,$arrayPostData);
          
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
-         pushMsg($arrayHeader,$arrayPostData);
+         // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         // $arrayPostData['messages'][0]['type'] = "text";
+         // $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
+         // pushMsg($arrayHeader,$arrayPostData);
          
-         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
-         pushMsg($arrayHeader,$arrayPostData);
+         // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         // $arrayPostData['messages'][0]['type'] = "text";
+         // $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
+         // pushMsg($arrayHeader,$arrayPostData);
 		
-		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-	    $arrayPostData['messages'][0]['type'] = "text";
-	    $arrayPostData['messages'][0]['text'] = "Type : " . $type;
-	    pushMsg($arrayHeader,$arrayPostData);
+		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+	    // $arrayPostData['messages'][0]['type'] = "text";
+	    // $arrayPostData['messages'][0]['text'] = "Type : " . $type;
+	    // pushMsg($arrayHeader,$arrayPostData);
 		
-		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "timestamp : " . $arrayJson['events'][0]['timestamp'];
-        pushMsg($arrayHeader,$arrayPostData);
+		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        // $arrayPostData['messages'][0]['type'] = "text";
+        // $arrayPostData['messages'][0]['text'] = "timestamp : " . $arrayJson['events'][0]['timestamp'];
+        // pushMsg($arrayHeader,$arrayPostData);
 		
-		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "data : " . $arrayJson['events'][0]['postback']['data'];
-        pushMsg($arrayHeader,$arrayPostData);
+		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        // $arrayPostData['messages'][0]['type'] = "text";
+        // $arrayPostData['messages'][0]['text'] = "data : " . $arrayJson['events'][0]['postback']['data'];
+        // pushMsg($arrayHeader,$arrayPostData);
 		
-		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "action : " . $action;
-        pushMsg($arrayHeader,$arrayPostData);
+		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        // $arrayPostData['messages'][0]['type'] = "text";
+        // $arrayPostData['messages'][0]['text'] = "action : " . $action;
+        // pushMsg($arrayHeader,$arrayPostData);
 		
-		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "date Pick : " . $datepick;
-        pushMsg($arrayHeader,$arrayPostData);
+		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        // $arrayPostData['messages'][0]['type'] = "text";
+        // $arrayPostData['messages'][0]['text'] = "date Pick : " . $datepick;
+        // pushMsg($arrayHeader,$arrayPostData);
 		
 		switch ($action)
 		{ 
 			case 'leave':
+				$conn = new mysqli($servername, $username, $password, $dbname);
+			    if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				} 
+				 $sql = "INSERT INTO temp_leave (`Id_line`, `leave_id`) value('" . $idTo . "','" . $leaveid ."')";
+
+				if ($conn->query($sql) === TRUE) {
+					
+				} 
+				$conn->close();
+				
 				$str = ' { "to": "'. $idTo . '",
 						   "messages": [
 						{
@@ -446,12 +498,23 @@
 				pushMsg($arrayHeader,$json);
 				break;
 			case 'Date_form':
-			
-				$arrayPostData['to'] = $idTo;
-				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
-				pushMsg($arrayHeader,$arrayPostData);
-				static $datefrom = $datepick;
+				$conn = new mysqli($servername, $username, $password, $dbname);
+				  if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+					} 
+					 $sql = "UPDATE temp_leave 
+							 SET Date_from = '". $datepick ."'
+							 where Id_line = '" . $idTo . "'";
+
+					if ($conn->query($sql) === TRUE) {
+						
+					} 
+					$conn->close();
+		
+				// $arrayPostData['to'] = $idTo;
+				// $arrayPostData['messages'][0]['type'] = "text";
+				// $arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
+				// pushMsg($arrayHeader,$arrayPostData);
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
 						{
@@ -481,11 +544,48 @@
 				pushMsg($arrayHeader,$json);
 				break;
 			case 'Date_to':
-			
+				$conn = new mysqli($servername, $username, $password, $dbname);
+			  if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				} 
+				 $sql = "UPDATE temp_leave 
+						 SET Date_to = '". $datepick ."'
+						 where Id_line = '" . $idTo . "'";
+
+				if ($conn->query($sql) === TRUE) {
+					
+				} 
+				
+			   $sql = "SELECT Date_from,leave_id,DATEDIFF(Date_from,Date_to) as numl FROM temp_leave Where Id_line = '" . $idTo . "'";
+			   $result_sql = $conn->query($sql);
+			   if ($result_sql->num_rows > 0) {
+				// output data of each row
+				while($row = $result_sql->fetch_assoc()) {
+					$Date_from = $row["Date_from"];
+					$numl = $row["numl"];
+					$leave_desc = get_desc_leave($row["leave_id"]);
+				}
+			   }
+				$conn->close();
+				
+				$text = $leave_desc . "ตั้งแต่ วันที่ : " . $Date_from . "ถึง วันที่ : " . $datepick . " เป็นจำนวน : " . $numl . " วัน ";
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่  :" . $datefrom . "ถึง วันที่ : " . $datepick;
+				$arrayPostData['messages'][0]['text'] = $text;
 				pushMsg($arrayHeader,$arrayPostData);
+				
+				$conn = new mysqli($servername, $username, $password, $dbname);
+				  if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+					} 
+					 $sql = "DELETE FROM temp_leave Where Id_line = '" . $idTo . "'";
+
+					if ($conn->query($sql) === TRUE) {
+						
+					} 
+					$conn->close();
+				$conn->close();
+				
 				break;
 				
 		}
@@ -522,6 +622,28 @@
         $result = curl_exec($ch);
         curl_close ($ch);
     }
+	
+	function get_desc_leave($leave_id)
+	{
+		switch ($leave_id)
+		{
+			case '01':
+				return 'Sick Leave';
+				break;
+			case '02':
+				return 'Personal Leave';
+				break;
+			case '03':
+				return 'Annual Leave';
+				break;
+			case '04':
+				return 'Compensate';
+				break;
+			case '05':
+				return 'Leave with out pay';
+				break;
+		}
+	}
 	
    exit;
    
