@@ -385,6 +385,10 @@
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
 			case 'Date_form';
+				$arrayPostData['to'] = $idTo;
+				$arrayPostData['messages'][0]['type'] = "text";
+				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
+				pushMsg($arrayHeader,$arrayPostData);
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
 						{
@@ -398,7 +402,7 @@
 								"action": {
 								  "type": "datetimepicker",
 								  "label": "Datetime Picker",
-								  "data": "action=Date_form",
+								  "data": "action=Date_to",
 								  "mode": "datetime",
 								  "initial": "2018-08-10t00:00",
 								  "max": "2018-12-31t23:59",
@@ -412,7 +416,10 @@
 					}  ';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
-			
+			case 'Date_to';
+			$arrayPostData['to'] = $idTo;
+			$arrayPostData['messages'][0]['type'] = "text";
+			$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
 		}
 		
 		 $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
@@ -449,6 +456,12 @@
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "action : " . $action;
         pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "date Pick : " . $date;
+        pushMsg($arrayHeader,$arrayPostData);
+		
 	}
    
 	
