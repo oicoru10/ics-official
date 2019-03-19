@@ -43,12 +43,45 @@
       $pic = $value->pictureUrl;
       $status = $value->statusMessage;
    }
+   
+   $servername = "remotemysql.com:3306";
+   $username = "OOd1POc2ro";
+   $password = "EtMy0i5bdp";
+
+   // Create connection
+   $conn = new mysqli($servername, $username, $password);
+   $sql = "SELECT Id_line, Name FROM Member Where Id_line = '" . $idTo . "'";
+   $result_sql = $conn->query($sql);
+   if ($result->num_rows > 0) {
+	   $row = $result->fetch_assoc();
+    // output data of each row
+    // while($row = $result->fetch_assoc()) {
+        // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+   
    if($type == "follow")
    {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
+	  if ( $row["Name"] <> null)
+	  {
+		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $row["Name"] . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
+	  }
+	  else
+	  {
+		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
+	  };
+      
       pushMsg($arrayHeader,$arrayPostData);
+	  
+	  $sql = "INSERT INTO Member (Id_line, Name)
+			VALUES ('".idTo."', '".$DisplayName."')";
+
+	if ($conn->query($sql) === TRUE) {
+		
+	} else 
+		
+	}
    }
    elseif($type == "unfollow")
    {
@@ -329,7 +362,7 @@
 		
 	}
    
-   
+	$conn->close();
    
    
    function pushMsg($arrayHeader,$arrayPostData){
