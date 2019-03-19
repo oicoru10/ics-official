@@ -73,6 +73,9 @@
       pushMsg($arrayHeader,$arrayPostData);
 	  
 	 $conn = new mysqli($servername, $username, $password, $dbname);
+	 if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	} 
 	 $sql = "INSERT INTO Member (Id_line, Name)
 			VALUES ('" . $idTo . "', '" . $DisplayName . "')";
 
@@ -115,9 +118,9 @@
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-	  if ( $row["Name"] <> null)
+	  if ( $name_ <> null)
 	  {
-		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $row["Name"];
+		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $name_;
 	  }
 	  else
 	  {
