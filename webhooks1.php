@@ -352,9 +352,10 @@
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
 	    $date = $arrayJson['events'][0]['params']['datetime'];
 		
-		$Action = getQueryParameter($Data_p, 'action');
+		parse_str($Data_p);
+		// $Action = getQueryParameter($Data_p, 'action');
 		
-		switch ($Action)
+		switch ($action)
 		{ 
 			case 'leave';
 				$str = ' { "to": "'. $idTo . '",
