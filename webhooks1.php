@@ -144,7 +144,7 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '{ "to": "U1433d8e7fabdefa79463b15e1924b4d0"
+		  $str = '{ "to": "' . $idTo . '"
 					  "messages": [
 						{
 						  "type": "text",
@@ -191,7 +191,7 @@
      }
    elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
-	   $str = ' { "to": "U1433d8e7fabdefa79463b15e1924b4d0"
+	   $str1 = ' { "to": "' . $idTo . '"
 					 "messages": [
 					  {
 					   "type": "flex",
@@ -218,9 +218,9 @@
 					  }
 					 ]
 				}';
-		$json = json_decode($str, true);
+		$json1 = json_decode($str1, true);
 	
-		pushMsg($arrayHeader,$json);
+		pushMsg($arrayHeader,$json1);
    }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
