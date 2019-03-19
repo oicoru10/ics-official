@@ -144,8 +144,7 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '{
-					  "to": "' . $idTo .'",
+		  $str = '{ "to": "' . $idTo .'"
 					  "messages": [
 						{
 						  "type": "text",
@@ -193,7 +192,7 @@
    elseif( strpos($message, 'เว็บ,Web') !== false  )
    {
 	   $str = ' {
-					 "to": "U3c28...",
+					 "to": "'. $idTo . '"
 					 "messages": [
 					  {
 					   "type": "flex",
