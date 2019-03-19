@@ -189,39 +189,7 @@
 	pushMsg($arrayHeader,$json);
 		  
      }
-   elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
-   {
-	   $str1 = ' { "to": "U1433d8e7fabdefa79463b15e1924b4d0"
-					 "messages": [
-					  {
-					   "type": "flex",
-					   "altText": "This is a Flex Message",
-					   "contents": {
-						"type": "bubble",
-						"body": {
-						 "type": "box",
-						 "layout": "vertical",
-						 "contents": [
-						  {
-						   "type": "button",
-						   "style": "primary",
-						   "height": "sm",
-						   "action": {
-							"type": "uri",
-							"label": "ICS Web",
-							"uri": "http://www.ics-th.com"
-						   }
-						  }
-						 ]
-						}
-					   }
-					  }
-					 ]
-				} ';
-		$json1 = json_decode($str1, true);
-	
-		pushMsg($arrayHeader,$json1);
-   }
+   
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
