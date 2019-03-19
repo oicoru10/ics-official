@@ -370,7 +370,7 @@
 	{	
 		$timestamp = $arrayJson['events'][0]['timestamp'];
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
-	    $datepick = $arrayJson['events'][0]['postback']['params']['datetime'];
+	    $datepick = $arrayJson['events'][0]['postback']['params']['date'];
 		
 		parse_str($Data_p);
 				
