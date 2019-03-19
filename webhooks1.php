@@ -576,7 +576,7 @@
 				$arrayPostData['messages'][0]['text'] = $text;
 				pushMsg($arrayHeader,$arrayPostData);
 				
-				$str = '{
+				$str = '{ "line": {
 							"type": "template",
 							"altText": "this is a confirm template",
 							"template": {
@@ -595,6 +595,7 @@
 								}
 							  ]
 							}
+						 }
 						}';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
