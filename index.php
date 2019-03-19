@@ -79,6 +79,9 @@ echo "Connected successfully";
         echo "id: " . $row["id"]. " - Name: " . $row["Name"];
     }
    }
+   else {
+    echo "0 results";
+}
    
   $conn->close();
 ?>
