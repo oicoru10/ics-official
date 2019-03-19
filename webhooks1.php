@@ -574,17 +574,16 @@
 				$arrayPostData['messages'][0]['text'] = $text;
 				pushMsg($arrayHeader,$arrayPostData);
 				
-				$conn = new mysqli($servername, $username, $password, $dbname);
-				  if ($conn->connect_error) {
-						die("Connection failed: " . $conn->connect_error);
-					} 
-					 $sql = "DELETE FROM temp_leave Where Id_line = '" . $idTo . "'";
+				// $conn = new mysqli($servername, $username, $password, $dbname);
+				  // if ($conn->connect_error) {
+						// die("Connection failed: " . $conn->connect_error);
+					// } 
+					 // $sql = "DELETE FROM temp_leave Where Id_line = '" . $idTo . "'";
 
-					if ($conn->query($sql) === TRUE) {
+					// if ($conn->query($sql) === TRUE) {
 						
-					} 
-					$conn->close();
-				$conn->close();
+					// } 
+				// $conn->close();
 				
 				break;
 				
