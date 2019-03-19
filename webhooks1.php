@@ -431,10 +431,10 @@
 								  "type": "datetimepicker",
 								  "label": "Datetime Picker",
 								  "data": "action=Date_form",
-								  "mode": "datetime",
-								  "initial": "2018-08-10t00:00",
-								  "max": "2018-12-31t23:59",
-								  "min": "2018-08-01t00:00"
+								  "mode": "date",
+								  "initial": "2018-08-10",
+								  "max": "2018-12-31",
+								  "min": "2018-08-01"
 								}
 							  }
 							]
@@ -449,40 +449,40 @@
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
-				replyMsg($arrayHeader,$arrayPostData);
+				pushMsg($arrayHeader,$arrayPostData);
 				
-				// $str = ' { "to": "'. $idTo . '",
-					 // "messages": [
-						// {
-						  // "type": "text",
-						  // "text": "เลือกวันลา(ถึง)",
-						  // "quickReply": {
-							// "items": [
-							  // {
-								// "type": "action",
-								// "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-								// "action": {
-								  // "type": "datetimepicker",
-								  // "label": "Datetime Picker",
-								  // "data": "action=Date_to",
-								  // "mode": "datetime",
-								  // "initial": "2018-08-10t00:00",
-								  // "max": "2018-12-31t23:59",
-								  // "min": "2018-08-01t00:00"
-								// }
-							  // }
-							// ]
-						  // }
-						// }
-					   // ]
-					// }  ';
-				// $json = json_decode($str, true);
-				// pushMsg($arrayHeader,$json);
+				$str = ' { "to": "'. $idTo . '",
+					 "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกวันลา(ถึง)",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								"action": {
+								  "type": "datetimepicker",
+								  "label": "Datetime Picker",
+								  "data": "action=Date_to",
+								  "mode": "date",
+								  "initial": "2018-08-10",
+								  "max": "2018-12-31",
+								  "min": "2018-08-01"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					}  ';
+				$json = json_decode($str, true);
+				pushMsg($arrayHeader,$json);
 			case 'Date_to';
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
-				replyMsg($arrayHeader,$arrayPostData);
+				pushMsg($arrayHeader,$arrayPostData);
 		}
 		
 	}
