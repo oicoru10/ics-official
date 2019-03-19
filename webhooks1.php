@@ -289,6 +289,10 @@
     }
    }
    
+   $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+   $arrayPostData['messages'][0]['type'] = "text";
+   $arrayPostData['messages'][0]['text'] = $arrayJson;
+   pushMsg($arrayHeader,$arrayPostData);
    
    
    function pushMsg($arrayHeader,$arrayPostData){
