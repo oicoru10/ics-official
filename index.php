@@ -57,16 +57,18 @@ echo "<BR>";
 $servername = "remotemysql.com:3306";
 $username = "OOd1POc2ro";
 $password = "EtMy0i5bdp";
+$dbname = "OOd1POc2ro";
 
 // Create connection
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 // $display = $array['displayName'];
 // echo $display;
 // Create connection
