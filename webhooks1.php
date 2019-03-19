@@ -15,7 +15,7 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    $id_g = $arrayJson['events'][0]['source']['groupId'];
    $id_r = $arrayJson['events'][0]['source']['roomId'];
-   &date_now = date("Y-m-d");
+   // &date_now = date("Y-m-d");
    $idTo = $id;
    if(!is_null($id_g))
    {
@@ -530,6 +530,7 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_to",
 								  "mode": "date",
+								  
 								  "initial": "2019-03-19",
 								  "max": "2020-12-31",
 								  "min": "2018-01-31"
@@ -543,6 +544,7 @@
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
 				break;
+				// "initial": "'. $date_now .'",
 			case 'Date_to':
 				$conn = new mysqli($servername, $username, $password, $dbname);
 			  if ($conn->connect_error) {
@@ -568,7 +570,7 @@
 			   }
 				$conn->close();
 				
-				$text = $leave_desc . "ตั้งแต่ วันที่ : " . $Date_from . " ถึง วันที่ : " . $datepick . " เป็นจำนวน : " . $numl . " วัน ";
+				$text = $leave_desc . " ตั้งแต่ วันที่ : " . $Date_from . " ถึง วันที่ : " . $datepick . " เป็นจำนวน : " . $numl . " วัน ";
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = $text;
@@ -596,6 +598,7 @@
 						}';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
+				
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				  if ($conn->connect_error) {
 						die("Connection failed: " . $conn->connect_error);
