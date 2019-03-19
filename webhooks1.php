@@ -191,7 +191,7 @@
 		  
      }
    
-elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
+  elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
 	   $str1 = ' { "to": "'. $idTo . '",
 					 "messages": [
@@ -293,7 +293,7 @@ elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !
    
    $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
    $arrayPostData['messages'][0]['type'] = "text";
-   $arrayPostData['messages'][0]['text'] = $arrayJson;
+   $arrayPostData['messages'][0]['text'] = "Type : " . $type;
    replyMsg($arrayHeader,$arrayPostData);
    
    
