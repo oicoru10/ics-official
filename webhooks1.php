@@ -63,14 +63,7 @@
    {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-	  if ( $row["Name"] <> null)
-	  {
-		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $row["Name"] . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
-	  }
-	  else
-	  {
-		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
-	  }
+	  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
       
       pushMsg($arrayHeader,$arrayPostData);
 	  
@@ -115,7 +108,14 @@
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName;
+	  if ( $row["Name"] <> null)
+	  {
+		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $row["Name"];
+	  }
+	  else
+	  {
+		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $DisplayName ;
+	  }
 	  $arrayPostData['messages'][1]['type'] = "text";
       $arrayPostData['messages'][1]['text'] = $status;
       $arrayPostData['messages'][2]['type'] = "sticker";
