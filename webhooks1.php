@@ -449,40 +449,40 @@
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
 				replyMsg($arrayHeader,$arrayPostData);
-			case 'Date_form';
+			// case 'Date_form';
 			
-				$str = ' { "to": "'. $idTo . '",
-					 "messages": [
-						{
-						  "type": "text",
-						  "text": "เลือกวันลา(ถึง)",
-						  "quickReply": {
-							"items": [
-							  {
-								"type": "action",
-								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-								"action": {
-								  "type": "datetimepicker",
-								  "label": "Datetime Picker",
-								  "data": "action=Date_to",
-								  "mode": "date",
-								  "initial": "2018-08-10",
-								  "max": "2018-12-31",
-								  "min": "2018-08-01"
-								}
-							  }
-							]
-						  }
-						}
-					   ]
-					}  ';
-				$json = json_decode($str, true);
-				pushMsg($arrayHeader,$json);
+				// $str = ' { "to": "'. $idTo . '",
+					 // "messages": [
+						// {
+						  // "type": "text",
+						  // "text": "เลือกวันลา(ถึง)",
+						  // "quickReply": {
+							// "items": [
+							  // {
+								// "type": "action",
+								// "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								// "action": {
+								  // "type": "datetimepicker",
+								  // "label": "Datetime Picker",
+								  // "data": "action=Date_to",
+								  // "mode": "date",
+								  // "initial": "2018-08-10",
+								  // "max": "2018-12-31",
+								  // "min": "2018-08-01"
+								// }
+							  // }
+							// ]
+						  // }
+						// }
+					   // ]
+					// }  ';
+				// $json = json_decode($str, true);
+				// pushMsg($arrayHeader,$json);
 				
-				$arrayPostData['to'] = $idTo;
-				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
-				replyMsg($arrayHeader,$arrayPostData);
+				// $arrayPostData['to'] = $idTo;
+				// $arrayPostData['messages'][0]['type'] = "text";
+				// $arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
+				// replyMsg($arrayHeader,$arrayPostData);
 				
 		}
 		
