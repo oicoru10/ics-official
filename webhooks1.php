@@ -174,115 +174,91 @@
      }
    ELSEIF( strpos($message, 'ลางาน') !== false )
       {
-          // $arrayPostData['to'] = $idTo;
-		  // $arrayPostData['messages'][0]['type'] = "text";
-		  // $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-		  // pushMsg($arrayHeader,$arrayPostData);
-          
 		  
-		  // $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-		  // $arrayPostData['to'] = $idTo;
-		  // $arrayPostData['messages'][0]['type'] = "text";
-		  // $arrayPostData['messages'][0]['text'] = "เลือกประเภทลา";
-		  
-		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
-		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-	      // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
-		  // $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
-		  
-		  // $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
-          // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
-          // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
-          // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
-          // $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
-		  // // replyMsg($arrayHeader,$arrayPostData);
-		  // pushMsg($arrayHeader,$arrayPostData);
-		  
-		  // $str = '
-				    // { "to": "'. $idTo . '",
-					  // "messages": [
-						// {
-						  // "type": "text",
-						  // "text": "เลือกประเภทลา",
-						  // "quickReply": {
-							// "items": [
-							  // {
-								// "type": "action",
-								// "action": {
-								  // "type": "postback",
-								  // "label": "ลาป่วย",
-								  // "data": "action=leave&itemid=00",
-								  // "displayText": "ลาป่วย"
-								// }
-							  // },
-							  // {
-								// "type": "action",
-								// "action": {
-								  // "type": "postback",
-								  // "label": "ลากิจ",
-								  // "data": "action=leave&itemid=01",
-								  // "displayText": "ลากิจ"
-								// }
-							  // },
-							  // {
-								// "type": "action",
-								// "action": {
-								  // "type": "postback",
-								  // "label": "ลาพักร้อน",
-								  // "data": "action=leave&itemid=02",
-								  // "displayText": "ลาพักร้อน"
-								// }
-							  // }
-							// ]
-						  // }
-						// }
-					   // ]
-					// } ';
-					
-	$str = ' { "to": "'. $idTo . '",
-					 "messages": [
-					  {
-					   "type": "flex",
-					   "altText": "This is a Flex Message",
-					   "contents": {
-						"type": "bubble",
-						"body": {
-						 "type": "box",
-						 "layout": "vertical",
-						 "spacing": "md",
-						 "contents": [
-						  {
-						   "type": "button",
-						   "style": "primary",
-						   "height": "sm",
-						   "action": {
-						   "type":"datetimepicker",
-						   "label":"Select date",
-						   "data":"action=Date_form",
-						   "mode":"datetime",
-						   "initial":"2017-12-25t00:00",
-						   "max":"2018-01-24t23:59",
-						   "min":"2017-12-25t00:00"
-						   }
-						  },
-						  {
-						   "type": "button",
-						   "style": "primary",
-						   "height": "sm",
-						   "action": {
-						   "type":"postback",
-						   "label":"ลากิจ",
-						   "data":"action=leave&itemid=111",
-						   "text":"Buy"
-						   }
+		  $str = '
+				    { "to": "'. $idTo . '",
+					  "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกประเภทลา",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลาป่วย",
+								  "data": "action=leave&itemid=00",
+								  "displayText": "ลาป่วย"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลากิจ",
+								  "data": "action=leave&itemid=01",
+								  "displayText": "ลากิจ"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลาพักร้อน",
+								  "data": "action=leave&itemid=02",
+								  "displayText": "ลาพักร้อน"
+								}
+							  }
+							]
 						  }
-						 ]
 						}
-					   }
-					  }
-					 ]
-				} ';
+					   ]
+					} ';
+					
+	// $str = ' { "to": "'. $idTo . '",
+					 // "messages": [
+					  // {
+					   // "type": "flex",
+					   // "altText": "This is a Flex Message",
+					   // "contents": {
+						// "type": "bubble",
+						// "body": {
+						 // "type": "box",
+						 // "layout": "vertical",
+						 // "spacing": "md",
+						 // "contents": [
+						  // {
+						   // "type": "button",
+						   // "style": "primary",
+						   // "height": "sm",
+						   // "action": {
+						   // "type":"datetimepicker",
+						   // "label":"Select date",
+						   // "data":"action=Date_form",
+						   // "mode":"datetime",
+						   // "initial":"2017-12-25t00:00",
+						   // "max":"2018-01-24t23:59",
+						   // "min":"2017-12-25t00:00"
+						   // }
+						  // },
+						  // {
+						   // "type": "button",
+						   // "style": "primary",
+						   // "height": "sm",
+						   // "action": {
+						   // "type":"postback",
+						   // "label":"ลากิจ",
+						   // "data":"action=leave&itemid=111",
+						   // "text":"ลากิจ"
+						   // }
+						  // }
+						 // ]
+						// }
+					   // }
+					  // }
+					 // ]
+				// } ';
 	
 	$json = json_decode($str, true);
 	
