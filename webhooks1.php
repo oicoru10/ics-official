@@ -60,7 +60,8 @@
    if ($result_sql->num_rows > 0) {
     // output data of each row
     while($row = $result_sql->fetch_assoc()) {
-		$name_ = $row["Name"];
+		$name_db = $row["Name"];
+		$id_db = $row["Id_line"];
     }
    }
     $conn->close();
@@ -95,6 +96,17 @@
 	  $arrayPostData['messages'][1]['packageId'] = "1";
 	  $arrayPostData['messages'][1]['stickerId'] = "131";
       pushMsg($arrayHeader,$arrayPostData);
+	  
+	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		} 
+		 $sql = "DELETE FROM Member Where Id_line = '" . $idTo . "'";
+
+		if ($conn->query($sql) === TRUE) {
+			
+		} 
+		$conn->close();
    }
    elseif($type == "join")
    {
@@ -118,9 +130,9 @@
     {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-	  if ( $name_ <> null)
+	  if ( $name_db <> null)
 	  {
-		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $name_;
+		  $arrayPostData['messages'][0]['text'] = "สวัสดี คุณ " . $name_db;
 	  }
 	  else
 	  {
@@ -200,7 +212,7 @@
 								"action": {
 								  "type": "postback",
 								  "label": "ลาป่วย",
-								  "data": "action=1&itemid=00",
+								  "data": "action=leave&itemid=00",
 								  "displayText": "ลาป่วย"
 								}
 							  },
@@ -209,7 +221,7 @@
 								"action": {
 								  "type": "postback",
 								  "label": "ลากิจ",
-								  "data": "action=2&itemid=01",
+								  "data": "action=leave&itemid=01",
 								  "displayText": "ลากิจ"
 								}
 							  },
@@ -218,7 +230,7 @@
 								"action": {
 								  "type": "postback",
 								  "label": "ลาพักร้อน",
-								  "data": "action=3&itemid=02",
+								  "data": "action=leave&itemid=02",
 								  "displayText": "ลาพักร้อน"
 								}
 							  }
@@ -236,7 +248,7 @@
    
   elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
-	   $str1 = ' { "to": "'. $idTo . '",
+	   $str = ' { "to": "'. $idTo . '",
 					 "messages": [
 					  {
 					   "type": "flex",
@@ -263,9 +275,9 @@
 					  }
 					 ]
 				} ';
-		$json1 = json_decode($str1, true);
+		$json = json_decode($str, true);
 	
-		pushMsg($arrayHeader,$json1);
+		pushMsg($arrayHeader,$json);
    }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
@@ -335,10 +347,73 @@
     }
    }
    elseif($type == "postback")
-	{
-		
+	{	
 		$timestamp = $arrayJson['events'][0]['timestamp'];
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
+	    $date = $arrayJson['events'][0]['params']['datetime'];
+		
+		$Action = getQueryParameter($Data_p, 'action');
+		
+		switch ($Action)
+		{ 
+			case 'leave';
+				$str = ' { "to": "'. $idTo . '",
+					 "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกวันลา(เริ่มต้น)",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								"action": {
+								  "type": "datetimepicker",
+								  "label": "Datetime Picker",
+								  "data": "action=Date_form",
+								  "mode": "datetime",
+								  "initial": "2018-08-10t00:00",
+								  "max": "2018-12-31t23:59",
+								  "min": "2018-08-01t00:00"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					}  ';
+				$json = json_decode($str, true);
+				replyMsg($arrayHeader,$json);
+			case 'Date_form';
+				$str = ' { "to": "'. $idTo . '",
+					 "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกวันลา(ถึง)",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								"action": {
+								  "type": "datetimepicker",
+								  "label": "Datetime Picker",
+								  "data": "action=Date_form",
+								  "mode": "datetime",
+								  "initial": "2018-08-10t00:00",
+								  "max": "2018-12-31t23:59",
+								  "min": "2018-08-01t00:00"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					}  ';
+				$json = json_decode($str, true);
+				replyMsg($arrayHeader,$json);
+			
+		}
 		
 		 $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
          $arrayPostData['messages'][0]['type'] = "text";
@@ -402,6 +477,17 @@
         $result = curl_exec($ch);
         curl_close ($ch);
     }
+	
+	function getQueryParameter($url, $param) {
+    $parsedUrl = parse_url($url);
+    if (array_key_exists('query', $parsedUrl)) {
+        parse_str($parsedUrl['query'], $queryParameters);
+        if (array_key_exists($param, $queryParameters)) {
+            return $queryParameters[$param];
+        }
+    }
+}
+	
    exit;
    
    
