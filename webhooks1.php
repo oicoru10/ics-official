@@ -60,7 +60,7 @@
    if ($result_sql->num_rows > 0) {
     // output data of each row
     while($row = $result_sql->fetch_assoc()) {
-		$name_ = $row["Name"].
+		$name_ = $row["Name"];
     }
    }
     $conn->close();
