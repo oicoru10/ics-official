@@ -70,7 +70,7 @@
 	  else
 	  {
 		  $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าา คุณ " . $DisplayName . "ขอบคุณที่เพิ่มเพื่อนนะะะะะ";
-	  };
+	  }
       
       pushMsg($arrayHeader,$arrayPostData);
 	  
