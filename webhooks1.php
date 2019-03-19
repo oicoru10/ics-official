@@ -47,17 +47,22 @@
    $servername = "remotemysql.com:3306";
    $username = "OOd1POc2ro";
    $password = "EtMy0i5bdp";
+   $dbname = "OOd1POc2ro";
 
-   // Create connection
-   $conn = new mysqli($servername, $username, $password);
+	// Create connection
+   $conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	} 
    $sql = "SELECT Id_line, Name FROM Member Where Id_line = '" . $idTo . "'";
    $result_sql = $conn->query($sql);
    if ($result_sql->num_rows > 0) {
-	   $row = $result_sql->fetch_assoc();
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result_sql->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     }
+   }
     $conn->close();
    if($type == "follow")
    {
@@ -67,7 +72,7 @@
       
       pushMsg($arrayHeader,$arrayPostData);
 	  
-	 $conn = new mysqli($servername, $username, $password);
+	 $conn = new mysqli($servername, $username, $password, $dbname);
 	 $sql = "INSERT INTO Member (Id_line, Name)
 			VALUES ('" . $idTo . "', '" . $DisplayName . "')";
 
