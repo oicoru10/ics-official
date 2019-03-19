@@ -145,7 +145,7 @@
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
 		  $str = '{
-					  "to": "U1433d8e7fabdefa79463b15e1924b4d0",
+					  "to": "' . $idTo .'",
 					  "messages": [
 						{
 						  "type": "text",
@@ -178,7 +178,7 @@
 								  "data": "action=3&itemid=02",
 								  "displayText": "ลาพักร้อน"
 								}
-							  },
+							  }
 							]
 						  }
 						}
