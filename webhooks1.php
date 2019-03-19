@@ -144,7 +144,7 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '{ "to": "U1433d8e7fabdefa79463b15e1924b4d0"
+		  $str = ' { "to": "U1433d8e7fabdefa79463b15e1924b4d0"
 					  "messages": [
 						{
 						  "type": "text",
@@ -182,7 +182,7 @@
 						  }
 						}
 					   ]
-					}';
+					} ';
 	
 	$json = json_decode($str, true);
 	
@@ -217,7 +217,7 @@
 					   }
 					  }
 					 ]
-				}';
+				} ';
 		$json1 = json_decode($str1, true);
 	
 		pushMsg($arrayHeader,$json1);
