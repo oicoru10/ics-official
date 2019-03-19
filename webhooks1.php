@@ -451,7 +451,7 @@
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
 				pushMsg($arrayHeader,$arrayPostData);
-				$datefrom = $datepick;
+				static $datefrom = $datepick;
 				$str = ' { "to": "'. $idTo . '",
 					 "messages": [
 						{
