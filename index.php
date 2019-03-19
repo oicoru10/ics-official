@@ -124,6 +124,7 @@ $str = '{
 	$json = json_decode($str, true);
 	echo $json;
 	print_r($json);
+	echo $str;
 // $display = $array['displayName'];
 // echo $display;
 
