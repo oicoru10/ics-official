@@ -282,6 +282,7 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
     }
+	
    ELSE
      {
       $arrayPostData['to'] = $idTo;
@@ -289,12 +290,21 @@
       $arrayPostData['messages'][0]['text'] = "ไม่มี Code ส่วนนี้อยู๋๋๋๋๋๋";
       pushMsg($arrayHeader,$arrayPostData);
     }
+   elseif($type == "postback")
+	{
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+	    $arrayPostData['messages'][0]['type'] = "text";
+	    $arrayPostData['messages'][0]['text'] = "Type : " . $type;
+	    pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = $result;
+         pushMsg($arrayHeader,$arrayPostData);
+	}
    }
    
-   $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-   $arrayPostData['messages'][0]['type'] = "text";
-   $arrayPostData['messages'][0]['text'] = "Type : " . $type;
-   replyMsg($arrayHeader,$arrayPostData);
+   
    
    
    function pushMsg($arrayHeader,$arrayPostData){
