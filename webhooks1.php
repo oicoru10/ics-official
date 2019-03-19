@@ -189,7 +189,7 @@
 	pushMsg($arrayHeader,$json);
 		  
      }
-   elseif( strpos($message, 'เว็บ,Web') !== false  )
+   elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
 	   $str = ' {
 					 "to": "'. $idTo . '"
