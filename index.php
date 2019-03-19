@@ -80,6 +80,8 @@ if ($conn->connect_error) {
    else {
     echo "0 results";
 	}
-   
+	   
   $conn->close();
+  
+  echo date("Y-m-d");
 ?>
