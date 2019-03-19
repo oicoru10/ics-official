@@ -68,19 +68,18 @@ if ($conn->connect_error) {
 // $display = $array['displayName'];
 // echo $display;
 // Create connection
- $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
+   $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
    $sql = "SELECT Id_line,Name FROM Member";
    $result_sql = $conn->query($sql);
    if ($result_sql->num_rows > 0) {
-	   $row = $result_sql->fetch_assoc();
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["Name"];
+        echo "id: " . $row["Id_line"]. " - Name: " . $row["Name"];
     }
    }
    else {
     echo "0 results";
-}
+	}
    
   $conn->close();
 ?>
