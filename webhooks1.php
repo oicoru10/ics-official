@@ -444,14 +444,13 @@
 					}  ';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
-				
-				
+								
 			case 'Date_form';
 				
-				$arrayPostData['to'] = $idTo;
-				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
-				pushMsg($arrayHeader,$arrayPostData);
+				// $arrayPostData['to'] = $idTo;
+				// $arrayPostData['messages'][0]['type'] = "text";
+				// $arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $datepick;
+				// pushMsg($arrayHeader,$arrayPostData);
 				// $str = ' { "to": "'. $idTo . '",
 					 // "messages": [
 						// {
