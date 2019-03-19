@@ -58,7 +58,7 @@
     while($row = $result->fetch_assoc()) {
         // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     }
-   
+    $conn->close();
    if($type == "follow")
    {
       $arrayPostData['to'] = $idTo;
@@ -67,12 +67,14 @@
       
       pushMsg($arrayHeader,$arrayPostData);
 	  
-	  $sql = "INSERT INTO Member (Id_line, Name)
-			VALUES ('".idTo."', '".$DisplayName."')";
+	 $conn = new mysqli($servername, $username, $password);
+	 $sql = "INSERT INTO Member (Id_line, Name)
+			VALUES ('" . $idTo . "', '" . $DisplayName . "')";
 
 	if ($conn->query($sql) === TRUE) {
 		
 	} 
+	$conn->close();
 		
 	
    }
