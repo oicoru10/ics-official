@@ -199,46 +199,90 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '
-				    { "to": "'. $idTo . '",
-					  "messages": [
-						{
-						  "type": "text",
-						  "text": "เลือกประเภทลา",
-						  "quickReply": {
-							"items": [
-							  {
-								"type": "action",
-								"action": {
-								  "type": "postback",
-								  "label": "ลาป่วย",
-								  "data": "action=leave&itemid=00",
-								  "displayText": "ลาป่วย"
-								}
-							  },
-							  {
-								"type": "action",
-								"action": {
-								  "type": "postback",
-								  "label": "ลากิจ",
-								  "data": "action=leave&itemid=01",
-								  "displayText": "ลากิจ"
-								}
-							  },
-							  {
-								"type": "action",
-								"action": {
-								  "type": "postback",
-								  "label": "ลาพักร้อน",
-								  "data": "action=leave&itemid=02",
-								  "displayText": "ลาพักร้อน"
-								}
-							  }
-							]
+		  // $str = '
+				    // { "to": "'. $idTo . '",
+					  // "messages": [
+						// {
+						  // "type": "text",
+						  // "text": "เลือกประเภทลา",
+						  // "quickReply": {
+							// "items": [
+							  // {
+								// "type": "action",
+								// "action": {
+								  // "type": "postback",
+								  // "label": "ลาป่วย",
+								  // "data": "action=leave&itemid=00",
+								  // "displayText": "ลาป่วย"
+								// }
+							  // },
+							  // {
+								// "type": "action",
+								// "action": {
+								  // "type": "postback",
+								  // "label": "ลากิจ",
+								  // "data": "action=leave&itemid=01",
+								  // "displayText": "ลากิจ"
+								// }
+							  // },
+							  // {
+								// "type": "action",
+								// "action": {
+								  // "type": "postback",
+								  // "label": "ลาพักร้อน",
+								  // "data": "action=leave&itemid=02",
+								  // "displayText": "ลาพักร้อน"
+								// }
+							  // }
+							// ]
+						  // }
+						// }
+					   // ]
+					// } ';
+					
+	$str = ' { "to": "'. $idTo . '",
+					 "messages": [
+					  {
+					   "type": "flex",
+					   "altText": "This is a Flex Message",
+					   "contents": {
+						"type": "bubble",
+						"body": {
+						 "type": "box",
+						 "layout": "vertical",
+						 "spacing": "md",
+						 "contents": [
+						  {
+						   "type": "button",
+						   "style": "primary",
+						   "height": "sm",
+						   "action": {
+						   "type":"datetimepicker",
+						   "label":"Select date",
+						   "data":"action=Date_form",
+						   "mode":"datetime",
+						   "initial":"2017-12-25t00:00",
+						   "max":"2018-01-24t23:59",
+						   "min":"2017-12-25t00:00"
+						   }
+						  },
+						  {
+						   "type": "button",
+						   "style": "primary",
+						   "height": "sm",
+						   "action": {
+						   "type":"postback",
+						   "label":"ลากิจ",
+						   "data":"action=leave&itemid=111",
+						   "text":"Buy"
+						   }
 						  }
+						 ]
 						}
-					   ]
-					} ';
+					   }
+					  }
+					 ]
+				} ';
 	
 	$json = json_decode($str, true);
 	
@@ -267,20 +311,6 @@
 							"type": "uri",
 							"label": "ICS Web",
 							"uri": "http://www.ics-th.com"
-						   }
-						  },
-						  {
-						   "type": "button",
-						   "style": "primary",
-						   "height": "sm",
-						   "action": {
-						   "type":"datetimepicker",
-						   "label":"Select date",
-						   "data":"storeId=12345",
-						   "mode":"datetime",
-						   "initial":"2017-12-25t00:00",
-						   "max":"2018-01-24t23:59",
-						   "min":"2017-12-25t00:00"
 						   }
 						  }
 						 ]
