@@ -15,7 +15,7 @@
    $id = $arrayJson['events'][0]['source']['userId'];
    $id_g = $arrayJson['events'][0]['source']['groupId'];
    $id_r = $arrayJson['events'][0]['source']['roomId'];
-   
+   &date_now = date("Y-m-d");
    $idTo = $id;
    if(!is_null($id_g))
    {
@@ -484,7 +484,7 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_form",
 								  "mode": "date",
-								  "initial": "'. date("Y-m-d") .'",
+								  "initial": "'. $date_now .'",
 								  "max": "9999-12-31",
 								  "min": "2018-12-31"
 								}
@@ -530,7 +530,7 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_to",
 								  "mode": "date",
-								  "initial": "'. date("Y-m-d") .'",
+								  "initial": "'. $date_now .'",
 								  "max": "9999-12-31",
 								  "min": "2018-12-31"
 								}
