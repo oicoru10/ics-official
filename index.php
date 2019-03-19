@@ -73,7 +73,7 @@ if ($conn->connect_error) {
    $result_sql = $conn->query($sql);
    if ($result_sql->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result_sql->fetch_assoc()) {
         echo "id: " . $row["Id_line"]. " - Name: " . $row["Name"];
     }
    }
