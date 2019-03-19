@@ -485,7 +485,7 @@
 								  "data": "action=Date_form",
 								  "mode": "date",
 								  "initial": "'. $date_now .'",
-								  "max": "9999-12-31",
+								  "max": "2020-12-31",
 								  "min": "2018-12-31"
 								}
 							  }
@@ -531,7 +531,7 @@
 								  "data": "action=Date_to",
 								  "mode": "date",
 								  "initial": "'. $date_now .'",
-								  "max": "9999-12-31",
+								  "max": "2020-12-31",
 								  "min": "2018-12-31"
 								}
 							  }
