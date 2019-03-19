@@ -484,7 +484,7 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_form",
 								  "mode": "date",
-								  "initial": "'. $date_now .'",
+								  "initial": "2019-03-19",
 								  "max": "2020-12-31",
 								  "min": "2018-01-31"
 								}
@@ -530,7 +530,7 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_to",
 								  "mode": "date",
-								  "initial": "'. $date_now .'",
+								  "initial": "2019-03-19",
 								  "max": "2020-12-31",
 								  "min": "2018-01-31"
 								}
@@ -573,8 +573,8 @@
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = $text;
 				pushMsg($arrayHeader,$arrayPostData);
+				
 				$str = '{
-						  "line": {
 							"type": "template",
 							"altText": "this is a confirm template",
 							"template": {
@@ -593,7 +593,6 @@
 								}
 							  ]
 							}
-						  }
 						}';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
