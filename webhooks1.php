@@ -190,6 +190,40 @@
 	pushMsg($arrayHeader,$json);
 		  
      }
+   elseif( strpos($message, 'เว็บ,Web') !== false  )
+   {
+	   $str = ' {
+					 "to": "U3c28...",
+					 "messages": [
+					  {
+					   "type": "flex",
+					   "altText": "This is a Flex Message",
+					   "contents": {
+						"type": "bubble",
+						"body": {
+						 "type": "box",
+						 "layout": "vertical",
+						 "contents": [
+						  {
+						   "type": "button",
+						   "style": "primary",
+						   "height": "sm",
+						   "action": {
+							"type": "uri",
+							"label": "Add to Cart",
+							"uri": "https://developers.line.me"
+						   }
+						  }
+						 ]
+						}
+					   }
+					  }
+					 ]
+				}';
+		$json = json_decode($str, true);
+	
+		pushMsg($arrayHeader,$json);
+   }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
