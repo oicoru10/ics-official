@@ -462,7 +462,7 @@
 			    if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				} 
-				 $sql = "INSERT INTO temp_leave (`Id_line`, `leave_id`) value('" . $idTo . "','" . $leaveid ."')";
+				 $sql = "INSERT INTO temp_leave (`Id_line`, `Date_from`, `Date_to`, `leave_id`) value('" . $idTo . "','2019-01-01','2019-03-01','" . $leaveid ."')";
 
 				if ($conn->query($sql) === TRUE) {
 					
