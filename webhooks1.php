@@ -350,7 +350,7 @@
 	{	
 		$timestamp = $arrayJson['events'][0]['timestamp'];
 	    $Data_p = $arrayJson['events'][0]['postback']['data'];
-	    $date = $arrayJson['events'][0]['params']['datetime'];
+	    $date = $arrayJson['events'][0]['postback']['params']['datetime'];
 		
 		parse_str($Data_p);
 				
@@ -424,43 +424,43 @@
 					}  ';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
-			// case 'Date_form';
-				// // $arrayPostData['to'] = $idTo;
-				// // $arrayPostData['messages'][0]['type'] = "text";
-				// // $arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
-				// // pushMsg($arrayHeader,$arrayPostData);
-				// $str = ' { "to": "'. $idTo . '",
-					 // "messages": [
-						// {
-						  // "type": "text",
-						  // "text": "เลือกวันลา(ถึง)",
-						  // "quickReply": {
-							// "items": [
-							  // {
-								// "type": "action",
-								// "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-								// "action": {
-								  // "type": "datetimepicker",
-								  // "label": "Datetime Picker",
-								  // "data": "action=Date_to",
-								  // "mode": "datetime",
-								  // "initial": "2018-08-10t00:00",
-								  // "max": "2018-12-31t23:59",
-								  // "min": "2018-08-01t00:00"
-								// }
-							  // }
-							// ]
-						  // }
-						// }
-					   // ]
-					// }  ';
-				// $json = json_decode($str, true);
-				// pushMsg($arrayHeader,$json);
-			// case 'Date_to';
-				// $arrayPostData['to'] = $idTo;
-				// $arrayPostData['messages'][0]['type'] = "text";
-				// $arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
-				// pushMsg($arrayHeader,$arrayPostData);
+			case 'Date_form';
+				$arrayPostData['to'] = $idTo;
+				$arrayPostData['messages'][0]['type'] = "text";
+				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
+				replyMsg($arrayHeader,$arrayPostData);
+				$str = ' { "to": "'. $idTo . '",
+					 "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกวันลา(ถึง)",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								"action": {
+								  "type": "datetimepicker",
+								  "label": "Datetime Picker",
+								  "data": "action=Date_to",
+								  "mode": "datetime",
+								  "initial": "2018-08-10t00:00",
+								  "max": "2018-12-31t23:59",
+								  "min": "2018-08-01t00:00"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					}  ';
+				$json = json_decode($str, true);
+				pushMsg($arrayHeader,$json);
+			case 'Date_to';
+				$arrayPostData['to'] = $idTo;
+				$arrayPostData['messages'][0]['type'] = "text";
+				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
+				replyMsg($arrayHeader,$arrayPostData);
 		}
 		
 	}
