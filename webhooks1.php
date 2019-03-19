@@ -191,8 +191,7 @@
      }
    elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
-	   $str = ' {
-					 "to": "'. $idTo . '"
+	   $str = ' { "to": "'. $idTo . '"
 					 "messages": [
 					  {
 					   "type": "flex",
@@ -209,8 +208,8 @@
 						   "height": "sm",
 						   "action": {
 							"type": "uri",
-							"label": "Add to Cart",
-							"uri": "https://developers.line.me"
+							"label": "ICS Web",
+							"uri": "http://www.ics-th.com"
 						   }
 						  }
 						 ]
