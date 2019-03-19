@@ -144,7 +144,7 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '{ "to": ' . $idTo . '
+		  $str = '{ "to": "U1433d8e7fabdefa79463b15e1924b4d0"
 					  "messages": [
 						{
 						  "type": "text",
@@ -191,7 +191,7 @@
      }
    elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
    {
-	   $str1 = ' { "to": ' . $idTo . '
+	   $str1 = ' { "to": "U1433d8e7fabdefa79463b15e1924b4d0"
 					 "messages": [
 					  {
 					   "type": "flex",
