@@ -353,6 +353,46 @@
 	    $date = $arrayJson['events'][0]['params']['datetime'];
 		
 		parse_str($Data_p);
+				
+		 $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
+         pushMsg($arrayHeader,$arrayPostData);
+         
+         $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
+         pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+	    $arrayPostData['messages'][0]['type'] = "text";
+	    $arrayPostData['messages'][0]['text'] = "Type : " . $type;
+	    pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "timestamp : " . $arrayJson['events'][0]['timestamp'];
+        pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "data : " . $arrayJson['events'][0]['postback']['data'];
+        pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "action : " . $action;
+        pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "date Pick : " . $date;
+        pushMsg($arrayHeader,$arrayPostData);
 		
 		switch ($action)
 		{ 
@@ -384,84 +424,44 @@
 					}  ';
 				$json = json_decode($str, true);
 				pushMsg($arrayHeader,$json);
-			case 'Date_form';
+			// case 'Date_form';
+				// // $arrayPostData['to'] = $idTo;
+				// // $arrayPostData['messages'][0]['type'] = "text";
+				// // $arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
+				// // pushMsg($arrayHeader,$arrayPostData);
+				// $str = ' { "to": "'. $idTo . '",
+					 // "messages": [
+						// {
+						  // "type": "text",
+						  // "text": "เลือกวันลา(ถึง)",
+						  // "quickReply": {
+							// "items": [
+							  // {
+								// "type": "action",
+								// "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								// "action": {
+								  // "type": "datetimepicker",
+								  // "label": "Datetime Picker",
+								  // "data": "action=Date_to",
+								  // "mode": "datetime",
+								  // "initial": "2018-08-10t00:00",
+								  // "max": "2018-12-31t23:59",
+								  // "min": "2018-08-01t00:00"
+								// }
+							  // }
+							// ]
+						  // }
+						// }
+					   // ]
+					// }  ';
+				// $json = json_decode($str, true);
+				// pushMsg($arrayHeader,$json);
+			// case 'Date_to';
 				// $arrayPostData['to'] = $idTo;
 				// $arrayPostData['messages'][0]['type'] = "text";
-				// $arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
+				// $arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
 				// pushMsg($arrayHeader,$arrayPostData);
-				$str = ' { "to": "'. $idTo . '",
-					 "messages": [
-						{
-						  "type": "text",
-						  "text": "เลือกวันลา(ถึง)",
-						  "quickReply": {
-							"items": [
-							  {
-								"type": "action",
-								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-								"action": {
-								  "type": "datetimepicker",
-								  "label": "Datetime Picker",
-								  "data": "action=Date_to",
-								  "mode": "datetime",
-								  "initial": "2018-08-10t00:00",
-								  "max": "2018-12-31t23:59",
-								  "min": "2018-08-01t00:00"
-								}
-							  }
-							]
-						  }
-						}
-					   ]
-					}  ';
-				$json = json_decode($str, true);
-				pushMsg($arrayHeader,$json);
-			case 'Date_to';
-				$arrayPostData['to'] = $idTo;
-				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $date;
-				pushMsg($arrayHeader,$arrayPostData);
 		}
-		
-		 // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         // $arrayPostData['messages'][0]['type'] = "text";
-         // $arrayPostData['messages'][0]['text'] = "UserID : " . $id;
-         // pushMsg($arrayHeader,$arrayPostData);
-         
-         // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         // $arrayPostData['messages'][0]['type'] = "text";
-         // $arrayPostData['messages'][0]['text'] = "GroupID : " . $id_g;
-         // pushMsg($arrayHeader,$arrayPostData);
-         
-         // $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-         // $arrayPostData['messages'][0]['type'] = "text";
-         // $arrayPostData['messages'][0]['text'] = "RoomID : " .$id_r;
-         // pushMsg($arrayHeader,$arrayPostData);
-		
-		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-	    // $arrayPostData['messages'][0]['type'] = "text";
-	    // $arrayPostData['messages'][0]['text'] = "Type : " . $type;
-	    // pushMsg($arrayHeader,$arrayPostData);
-		
-		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        // $arrayPostData['messages'][0]['type'] = "text";
-        // $arrayPostData['messages'][0]['text'] = "timestamp : " . $arrayJson['events'][0]['timestamp'];
-        // pushMsg($arrayHeader,$arrayPostData);
-		
-		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        // $arrayPostData['messages'][0]['type'] = "text";
-        // $arrayPostData['messages'][0]['text'] = "data : " . $arrayJson['events'][0]['postback']['data'];
-        // pushMsg($arrayHeader,$arrayPostData);
-		
-		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        // $arrayPostData['messages'][0]['type'] = "text";
-        // $arrayPostData['messages'][0]['text'] = "action : " . $action;
-        // pushMsg($arrayHeader,$arrayPostData);
-		
-		// $arrayPostData['to'] = 'U1433d8e7fabdefa79463b15e1924b4d0';
-        // $arrayPostData['messages'][0]['type'] = "text";
-        // $arrayPostData['messages'][0]['text'] = "date Pick : " . $date;
-        // pushMsg($arrayHeader,$arrayPostData);
 		
 	}
    
