@@ -144,71 +144,46 @@
 		  // // replyMsg($arrayHeader,$arrayPostData);
 		  // pushMsg($arrayHeader,$arrayPostData);
 		  
-		  $str = '{
-  "to": "U1433d8e7fabdefa79463b15e1924b4d0",
-  "messages": [
-    {
-      "type": "text",
-      "text": "Hello Quick Reply!",
-      "quickReply": {
-        "items": [
-          {
-            "type": "action",
-            "action": {
-              "type": "cameraRoll",
-              "label": "Camera Roll"
-            }
-          },
-          {
-            "type": "action",
-            "action": {
-              "type": "camera",
-              "label": "Camera"
-            }
-          },
-          {
-            "type": "action",
-            "action": {
-              "type": "location",
-              "label": "Location"
-            }
-          },
-          {
-            "type": "action",
-            "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
-            "action": {
-              "type": "message",
-              "label": "Message",
-              "text": "Hello World!"
-            }
-            },
-          {
-            "type": "action",
-            "action": {
-              "type": "postback",
-              "label": "Postback",
-              "data": "action=buy&itemid=123",
-              "displayText": "Buy"
-            }
-            },
-          {
-            "type": "action",
-            "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-            "action": {
-              "type": "datetimepicker",
-              "label": "Datetime Picker",
-              "data": "storeId=12345",
-              "mode": "datetime",
-              "initial": "2018-08-10t00:00",
-              "max": "2018-12-31t23:59",
-              "min": "2018-08-01t00:00"
-            }
-          }
-        ]
-      }
-    }
-   ]
-}';
+		  $str = '
+				    { "to": "'. $idTo . '",
+					  "messages": [
+						{
+						  "type": "text",
+						  "text": "เลือกประเภทลา",
+						  "quickReply": {
+							"items": [
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลาป่วย",
+								  "data": "action=1&itemid=00",
+								  "displayText": "ลาป่วย"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลากิจ",
+								  "data": "action=2&itemid=01",
+								  "displayText": "ลากิจ"
+								}
+							  },
+							  {
+								"type": "action",
+								"action": {
+								  "type": "postback",
+								  "label": "ลาพักร้อน",
+								  "data": "action=3&itemid=02",
+								  "displayText": "ลาพักร้อน"
+								}
+							  }
+							]
+						  }
+						}
+					   ]
+					} ';
 	
 	$json = json_decode($str, true);
 	
@@ -216,6 +191,39 @@
 		  
      }
    
+elseif( strpos($message, 'เว็บ') !== false  OR strpos($message, 'Web') !== false )
+   {
+	   $str1 = ' { "to": "'. $idTo . '",
+					 "messages": [
+					  {
+					   "type": "flex",
+					   "altText": "This is a Flex Message",
+					   "contents": {
+						"type": "bubble",
+						"body": {
+						 "type": "box",
+						 "layout": "vertical",
+						 "contents": [
+						  {
+						   "type": "button",
+						   "style": "primary",
+						   "height": "sm",
+						   "action": {
+							"type": "uri",
+							"label": "ICS Web",
+							"uri": "http://www.ics-th.com"
+						   }
+						  }
+						 ]
+						}
+					   }
+					  }
+					 ]
+				} ';
+		$json1 = json_decode($str1, true);
+	
+		pushMsg($arrayHeader,$json1);
+   }
    ELSEIF( strpos($message, 'ดึงข้อมูล') !== false )
     {
       if($id == "U1433d8e7fabdefa79463b15e1924b4d0")
