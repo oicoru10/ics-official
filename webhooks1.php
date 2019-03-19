@@ -481,10 +481,11 @@
 				pushMsg($arrayHeader,$json);
 				break;
 			case 'Date_to':
+			
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = "ถึง วันที่ : " . $datepick;
-				replyMsg($arrayHeader,$arrayPostData);
+				pushMsg($arrayHeader,$arrayPostData);
 				break;
 				
 		}
