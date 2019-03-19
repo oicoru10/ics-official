@@ -268,6 +268,20 @@
 							"label": "ICS Web",
 							"uri": "http://www.ics-th.com"
 						   }
+						  },
+						  {
+						   "type": "button",
+						   "style": "primary",
+						   "height": "sm",
+						   "action": {
+						   "type":"datetimepicker",
+						   "label":"Select date",
+						   "data":"storeId=12345",
+						   "mode":"datetime",
+						   "initial":"2017-12-25t00:00",
+						   "max":"2018-01-24t23:59",
+						   "min":"2017-12-25t00:00"
+						   }
 						  }
 						 ]
 						}
@@ -431,33 +445,33 @@
 				$arrayPostData['messages'][0]['text'] = "ตั้งแต่ วันที่ : " . $date;
 				replyMsg($arrayHeader,$arrayPostData);
 				
-				$str = ' { "to": "'. $idTo . '",
-					 "messages": [
-						{
-						  "type": "text",
-						  "text": "เลือกวันลา(ถึง)",
-						  "quickReply": {
-							"items": [
-							  {
-								"type": "action",
-								"imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-								"action": {
-								  "type": "datetimepicker",
-								  "label": "Datetime Picker",
-								  "data": "action=Date_to",
-								  "mode": "datetime",
-								  "initial": "2018-08-10t00:00",
-								  "max": "2018-12-31t23:59",
-								  "min": "2018-08-01t00:00"
-								}
-							  }
-							]
-						  }
-						}
-					   ]
-					}  ';
-				$json = json_decode($str, true);
-				pushMsg($arrayHeader,$json);
+				// $str = ' { "to": "'. $idTo . '",
+					 // "messages": [
+						// {
+						  // "type": "text",
+						  // "text": "เลือกวันลา(ถึง)",
+						  // "quickReply": {
+							// "items": [
+							  // {
+								// "type": "action",
+								// "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+								// "action": {
+								  // "type": "datetimepicker",
+								  // "label": "Datetime Picker",
+								  // "data": "action=Date_to",
+								  // "mode": "datetime",
+								  // "initial": "2018-08-10t00:00",
+								  // "max": "2018-12-31t23:59",
+								  // "min": "2018-08-01t00:00"
+								// }
+							  // }
+							// ]
+						  // }
+						// }
+					   // ]
+					// }  ';
+				// $json = json_decode($str, true);
+				// pushMsg($arrayHeader,$json);
 			case 'Date_to';
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
