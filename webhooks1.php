@@ -484,9 +484,9 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_form",
 								  "mode": "date",
-								  "initial": "2018-08-10",
-								  "max": "2018-12-31",
-								  "min": "2018-08-01"
+								  "initial": "'. date("Y-m-d") .'",
+								  "max": "9999-12-31",
+								  "min": "2018-12-31"
 								}
 							  }
 							]
@@ -530,9 +530,9 @@
 								  "label": "Datetime Picker",
 								  "data": "action=Date_to",
 								  "mode": "date",
-								  "initial": "2018-08-10",
-								  "max": "2018-12-31",
-								  "min": "2018-08-01"
+								  "initial": "'. date("Y-m-d") .'",
+								  "max": "9999-12-31",
+								  "min": "2018-12-31"
 								}
 							  }
 							]
@@ -556,7 +556,7 @@
 					
 				} 
 				
-			   $sql = "SELECT Date_from,leave_id,DATEDIFF(Date_from,Date_to) as numl FROM temp_leave Where Id_line = '" . $idTo . "'";
+			   $sql = "SELECT Date_from,leave_id,DATEDIFF(Date_to,Date_from) as numl FROM temp_leave Where Id_line = '" . $idTo . "'";
 			   $result_sql = $conn->query($sql);
 			   if ($result_sql->num_rows > 0) {
 				// output data of each row
@@ -568,12 +568,35 @@
 			   }
 				$conn->close();
 				
-				$text = $leave_desc . "ตั้งแต่ วันที่ : " . $Date_from . "ถึง วันที่ : " . $datepick . " เป็นจำนวน : " . $numl . " วัน ";
+				$text = $leave_desc . "ตั้งแต่ วันที่ : " . $Date_from . " ถึง วันที่ : " . $datepick . " เป็นจำนวน : " . $numl . " วัน ";
 				$arrayPostData['to'] = $idTo;
 				$arrayPostData['messages'][0]['type'] = "text";
 				$arrayPostData['messages'][0]['text'] = $text;
 				pushMsg($arrayHeader,$arrayPostData);
-				
+				$str = '{
+						  "line": {
+							"type": "template",
+							"altText": "this is a confirm template",
+							"template": {
+							  "type": "confirm",
+							  "text": "ยืนยันข้อมูลหรือไม่?",
+							  "actions": [
+								{
+								  "type": "message",
+								  "label": "ใช่",
+								  "text": "ใช่"
+								},
+								{
+								  "type": "message",
+								  "label": "ไม่",
+								  "text": "ไม่"
+								}
+							  ]
+							}
+						  }
+						}';
+				$json = json_decode($str, true);
+				pushMsg($arrayHeader,$json);
 				// $conn = new mysqli($servername, $username, $password, $dbname);
 				  // if ($conn->connect_error) {
 						// die("Connection failed: " . $conn->connect_error);
