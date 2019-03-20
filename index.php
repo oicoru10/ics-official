@@ -1,4 +1,48 @@
+<!DOCTYPE HTML>
 
+<html>
+
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<script src="../../../resources/sap-ui-core.js" id="sap-ui-bootstrap"
+
+          data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_mvi">
+
+</script>
+
+<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
+
+<script>
+
+          // Tell UI5 where to find application content
+
+          sap.ui.localResources("view"); //view is the name of the folder where views are stored
+
+          jQuery.sap.registerModulePath('Application', 'Application');
+
+          // Launch application
+
+          jQuery.sap.require("Application");
+
+          var oApp = new Application( {
+
+                    root : "content"
+
+          }); // instantiate your application and mark the HTML element with id "content" as location for the UI
+
+</script>
+
+</head>
+
+<body class="sapUiBody" role="application">
+
+<div id="content"></div>
+
+</body>
+
+</html>
 <?php
   echo "สวัสดี LINE BOT";
   echo "<BR>";
@@ -20,30 +64,30 @@
 		   // echo $people;
 	   // }
 	   
-	require_once "Connect.php";
-   //connect
-    $OData = new Z_WE_ASSCOCUSTOPENID_SRV_Entities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/') ;
-	$OData->Credential = new WindowsCredential('thanagone','p@ssw0rd');
-   try
-{
-    // //Create a Customer php Object
-    // $OpenId = OpenId::CreateOpenId( "","",$_POST["Name"],$_POST["CustomerName"],$_POST["Code"]);
-    // //inserting Customers object context tracking system
-    // $OData->AddObject('OpenIdSet', $OpenId);
-	   // //SaveChange insert the object into data service
-	   // $Odata->SaveChanges();
+	// require_once "Connect.php";
+   // //connect
+    // $OData = new Z_WE_ASSCOCUSTOPENID_SRV_Entities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/') ;
+	// $OData->Credential = new WindowsCredential('thanagone','p@ssw0rd');
+   // try
+// {
+    // // //Create a Customer php Object
+    // // $OpenId = OpenId::CreateOpenId( "","",$_POST["Name"],$_POST["CustomerName"],$_POST["Code"]);
+    // // //inserting Customers object context tracking system
+    // // $OData->AddObject('OpenIdSet', $OpenId);
+	   // // //SaveChange insert the object into data service
+	   // // $Odata->SaveChanges();
 	   
-	 $result  = $Odata->getEntities();
-}
-catch(ODataServiceException $exception)
-{
-    Echo $exception->getError();
-}
+	 // $result  = $Odata->getEntities();
+// }
+// catch(ODataServiceException $exception)
+// {
+    // Echo $exception->getError();
+// }
 
-foreach ($result as $resultx ){
-            foreach ($resultx as $v){
-                echo ("test:" .  $v);
-            }}
+// foreach ($result as $resultx ){
+            // foreach ($resultx as $v){
+                // echo ("test:" .  $v);
+            // }}
 	// foreach ($people as $value)
    // {
       // $empp = $value->EmployeeID;
