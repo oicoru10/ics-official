@@ -1,55 +1,3 @@
-<?php
-class SapTest {
- const SAP_WSDL_URI  = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
- const SAP_USER =  'thanagone.ku';
- const SAP_PWD  = 'p@ssw0rd';
-
-public function execute() {
-
-        $client = new SoapClient('http://'.urlencode(self::SAP_USER).':'.urldecode(self::SAP_PWD).'@'.self::SAP_WSDL_URI,
-                array("trace" => 1,
-                      "exceptions" => 1,
-                      "login" => self::SAP_USER,
-                      "password" => self::SAP_PWD,
-                      'features' => SOAP_SINGLE_ELEMENT_ARRAYS)
-        );
-
-        $method = '_-bic_-nf2';
-
-        $parameter = array('ETColumnDescription' => null,
-                           'ETGridData' => null,
-                           'ETMessageLog' => null,
-                           'ETRowDescription' => null,
-                           'ISVar_01xwerbet' => array('Sign' => 'I',
-                                                      'Option' => 'LE',
-                                                      'Low' => '3',
-                                                      'High' => null));
-
-        try
-        {
-
-        $result = $client->$method($parameter);
-        print_r($result);
-        } catch(SoapFault $e) {
-
-        echo "REQUEST HEADER:\n" . $client->__getLastRequestHeaders() . "\n";
-          echo "REQUEST:\n" . $client->__getLastRequest() . "\n";
-
-          echo "RESPONSE HEADER:\n" . $client->__getLastResponseHeaders() . "\n";
-
-          echo "RESPONSE:\n" . $client->__getLastResponse() . "\n";
-        print_r($e);
-    }
-
-
-}
-
-}
-
-$oSap = new SapTest();
-$oSap->execute();
-?>
-
 
 <?php
   echo "สวัสดี LINE BOT";
@@ -142,4 +90,9 @@ echo "<BR>";
 	// #Out the results
 	// print_r($result);
 	// error:SOAP-ERROR: Encoding: object has no 'HeadData' property
+	
+	$client = new GuzzleHttp\Client();
+	$res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
+	$people = json_decode($res, true);
+	print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 ?>
