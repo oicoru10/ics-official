@@ -54,34 +54,39 @@ echo "<BR>";
 // echo $json;
 
 // echo $json;
-$servername = "remotemysql.com:3306";
-$username = "OOd1POc2ro";
-$password = "EtMy0i5bdp";
-$dbname = "OOd1POc2ro";
+// $servername = "remotemysql.com:3306";
+// $username = "OOd1POc2ro";
+// $password = "EtMy0i5bdp";
+// $dbname = "OOd1POc2ro";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-// $display = $array['displayName'];
-// echo $display;
-// Create connection
-   $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
-   $sql = "SELECT Id_line,Name FROM Member";
-   $result_sql = $conn->query($sql);
-   if ($result_sql->num_rows > 0) {
-    // output data of each row
-    while($row = $result_sql->fetch_assoc()) {
-        echo "id: " . $row["Id_line"]. " - Name: " . $row["Name"];
-    }
-   }
-   else {
-    echo "0 results";
-	}
+// // Create connection
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// // Check connection
+// if ($conn->connect_error) {
+    // die("Connection failed: " . $conn->connect_error);
+// } 
+// // $display = $array['displayName'];
+// // echo $display;
+// // Create connection
+   // $idTo = 'U1433d8e7fabdefa79463b15e1924b4d0'.
+   // $sql = "SELECT Id_line,Name FROM Member";
+   // $result_sql = $conn->query($sql);
+   // if ($result_sql->num_rows > 0) {
+    // // output data of each row
+    // while($row = $result_sql->fetch_assoc()) {
+        // echo "id: " . $row["Id_line"]. " - Name: " . $row["Name"];
+    // }
+   // }
+   // else {
+    // echo "0 results";
+	// }
 	   
-  $conn->close();
+  // $conn->close();
   
-  echo date("Y-m-d");
+  // echo date("Y-m-d");
+  
+	$client = new GuzzleHttp\Client();
+	$res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet("00000001")');
+	$people = json_decode($res, true)['value'];
+	print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 ?>
