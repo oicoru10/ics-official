@@ -94,7 +94,7 @@
 	$client = new GuzzleHttp\Client();
 	$res = $client->request('GET', 'GET http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
 	$people = json_decode($res, true)['value'];
-	   if ( $Profile == null)
+	   if ( $people == null)
 	   {
 		   echo 'not connect';
 	   }
