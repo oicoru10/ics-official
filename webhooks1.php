@@ -598,7 +598,7 @@
 						 }
 						}';
 				$json = json_decode($str, true);
-				pushMsg($arrayHeader,$json);
+				replyMsg($arrayHeader,$json);
 				
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				  if ($conn->connect_error) {
