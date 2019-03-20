@@ -101,6 +101,7 @@ echo "<BR>";
 	  // echo "<BR>";
    // }
 	// echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	 echo '<BR>';
 	$host  =  "http://vms4ics.ics-th.com";
 	// Port
 	$port  =  8000;
@@ -130,5 +131,13 @@ echo "<BR>";
    curl_close($ch);
    $json_string = '[' . $result . ']';
    $Profile = json_decode($json_string);
-   echo $Profile;
+   if ( $Profile == null)
+   {
+	   echo 'not connect';
+   }
+   else
+   {
+	   echo $Profile;
+   }
+   
 ?>
