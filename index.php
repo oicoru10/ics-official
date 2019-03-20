@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
 
-var service_url = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet('00000001')";
-$.ajax({
-                url: service_url,
-                type: 'GET',
-                dataType: 'json',
-     async: false,headers: { 'x-http-method': 'GET' },
-                username: "thanagone.ku",
-                password: "p@ssw0rd",
-                success: function (result) {
-                console.log(result);
-                },
-                error: function (error) {
-                console.log("error");
-                console.log(error);
-                    //deferred.reject(error);
-                }
-            });
-
-
-</script>
-</head>
-<body>
-
-<p>If you click on me, I will disappear.</p>
-<p>Click me away!</p>
-<p>Click me too!</p>
 <?php
   echo "สวัสดี LINE BOT";
   echo "<BR>";
@@ -123,9 +91,17 @@ $.ajax({
 	// print_r($result);
 	// error:SOAP-ERROR: Encoding: object has no 'HeadData' property
 	
-	// $client = new GuzzleHttp\Client();
-	// $res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
-	// $people = json_decode($res, true);
+	$client = new GuzzleHttp\Client();
+	$res = $client->request('GET', 'GET http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
+	$people = json_decode($res, true)['value'];
+	   if ( $Profile == null)
+	   {
+		   echo 'not connect';
+	   }
+	   else
+	   {
+		   echo $people;
+	   }
 	// foreach ($people as $value)
    // {
       // $empp = $value->EmployeeID;
@@ -134,45 +110,44 @@ $.ajax({
    // }
 	// echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	 echo '<BR>';
-	$host  =  "http://vms4ics.ics-th.com";
-	// Port
-	$port  =  '8000';
-	// Login credentials
-	$params  =  [
-			"UserName"  =>  "thanagone.ku",
-			"Password"  =>  "p@ssw0rd",
-	];
+	// $host  =  "http://vms4ics.ics-th.com";
+	// // Port
+	// $port  =  '8000';
+	// // Login credentials
+	// $params  =  [
+			// "UserName"  =>  "thanagone.ku",
+			// "Password"  =>  "p@ssw0rd",
+	// ];
 
 	
-   $content = file_get_contents('php://input');
-   $arrayJson = json_decode($content, true);
-   $arrayHeader = array();
-   $arrayHeader[] = "Content-Type: application/json";
-   $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   // $content = file_get_contents('php://input');
+   // $arrayJson = json_decode($content, true);
+   // $arrayHeader = array();
+   // $arrayHeader[] = "Content-Type: application/json";
+   // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 	
-   $url = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
-   $ch = curl_init($url);
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch,  CURLOPT_SSL_VERIFYPEER,  false);
-   curl_setopt($ch,  CURLOPT_VERBOSE,  1);
-   curl_setopt($ch,  CURLOPT_POST,  true);
-   curl_setopt($ch,  CURLOPT_POSTFIELDS,  json_encode($params));
-   // curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
-   // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-   $result = curl_exec($ch);
-   curl_close($ch);
-   $json_string = '[' . $result . ']';
-   $Profile = json_decode($json_string);
-   if ( $Profile == null)
-   {
-	   echo 'not connect';
-   }
-   else
-   {
-	   echo $Profile;
-   }
+   // $url = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+   // $ch = curl_init($url);
+   // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   // curl_setopt($ch,  CURLOPT_SSL_VERIFYPEER,  false);
+   // curl_setopt($ch,  CURLOPT_VERBOSE,  1);
+   // curl_setopt($ch,  CURLOPT_POST,  true);
+   // curl_setopt($ch,  CURLOPT_POSTFIELDS,  json_encode($params));
+   // // curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+   // // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+   // $result = curl_exec($ch);
+   // curl_close($ch);
+   // $json_string = '[' . $result . ']';
+   // $Profile = json_decode($json_string);
+   // if ( $Profile == null)
+   // {
+	   // echo 'not connect';
+   // }
+   // else
+   // {
+	   // echo $Profile;
+   // }
    
 ?>
-</body>
-</html>
+
 
