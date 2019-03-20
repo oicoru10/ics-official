@@ -130,5 +130,5 @@ echo "<BR>";
    curl_close($ch);
    $json_string = '[' . $result . ']';
    $Profile = json_decode($json_string);
-   
+   echo $Profile;
 ?>
