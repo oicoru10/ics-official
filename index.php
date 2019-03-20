@@ -90,17 +90,21 @@
 	// #Out the results
 	// print_r($result);
 	// error:SOAP-ERROR: Encoding: object has no 'HeadData' property
-	
+	 echo '<BR>';
 	$client = new GuzzleHttp\Client();
 	$res = $client->request('GET', 'GET http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
 	$people = json_decode($res, true)['value'];
-	   if ( $people == null)
+	
+	$sap_wsdl = "http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet('00000001')";
+	$sap_client = new SoapClient($sap_wsdl);
+	$res = $sap_client->RFC_READ_TABLE();
+	   if ( $res == null)
 	   {
 		   echo 'not connect';
 	   }
 	   else
 	   {
-		   echo $people;
+		   echo $res;
 	   }
 	// foreach ($people as $value)
    // {
@@ -109,7 +113,7 @@
 	  // echo "<BR>";
    // }
 	// echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
-	 echo '<BR>';
+	
 	// $host  =  "http://vms4ics.ics-th.com";
 	// // Port
 	// $port  =  '8000';
