@@ -146,7 +146,7 @@ var soapMessage = createSoapRequest(zipcode);
 This isn't a real web service URL, just an example. 
 Sometimes the URL to SAP web services can be quite long so thats why I put it in a separate variable.
 */
-var servicePath = "http://service.url.com/sap/bc/srt/rfc/sap/zcrm_web_service/";
+var servicePath = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/";
  
 $.ajax({
 	url: servicePath,
