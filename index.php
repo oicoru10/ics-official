@@ -95,7 +95,7 @@ echo "<BR>";
 	$client = new GuzzleHttp\Client();
 	$res = $client->request('GET', 'GET http://services.odata.org/TripPinRESTierService/People');
 	$people = json_decode($res, true)['value'];
-	print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
    
 	// $svc = new NorthwindEntities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV');
      
