@@ -121,25 +121,25 @@ echo "<BR>";
 
 // /* commit the change on the server */        
     // $proxy->SaveChanges();
-	$SOAP_AUTH= array( 'login' => 'thanagone.ku', 'password' => 'p@ssw0rd');
-	#SpecifyWSDL
-	$WSDL="http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet";
-	#CreateClient Object, download and parse WSDL
-	$client= new SoapClient($WSDL,$SOAP_AUTH);
-	$HEAD_DATA= new stdClass();
-	$HEAD_DATA->EmployeeID = '00000001';
-	#Setup input parameters (SAP Likes to Capitalise the parameter names)
-	$params= array('HEADDATA' => $HEAD_DATA );
-	#Call Operation (Function). Catch and display any errors
-	try {
-	   $result = $client->StandardMaterialSaveData($params);
-	}catch(SoapFault $exception) {
-	   print "***Caught Exception***\n";
-	   print_r($exception);
-	   print "***END Exception***\n";
-	   die();
-	}
-	#Out the results
-	print_r($result);
-	error:SOAP-ERROR: Encoding: object has no 'HeadData' property
+	// $SOAP_AUTH= array( 'login' => 'thanagone.ku', 'password' => 'p@ssw0rd');
+	// #SpecifyWSDL
+	// $WSDL="http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet";
+	// #CreateClient Object, download and parse WSDL
+	// $client= new SoapClient($WSDL,$SOAP_AUTH);
+	// $HEAD_DATA= new stdClass();
+	// $HEAD_DATA->EmployeeID = '00000001';
+	// #Setup input parameters (SAP Likes to Capitalise the parameter names)
+	// $params= array('HEADDATA' => $HEAD_DATA );
+	// #Call Operation (Function). Catch and display any errors
+	// try {
+	   // $result = $client->StandardMaterialSaveData($params);
+	// }catch(SoapFault $exception) {
+	   // print "***Caught Exception***\n";
+	   // print_r($exception);
+	   // print "***END Exception***\n";
+	   // die();
+	// }
+	// #Out the results
+	// print_r($result);
+	// error:SOAP-ERROR: Encoding: object has no 'HeadData' property
 ?>
