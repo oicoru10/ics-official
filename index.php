@@ -94,5 +94,5 @@ echo "<BR>";
 	$client = new GuzzleHttp\Client();
 	$res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
 	$people = json_decode($res, true);
-	print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 ?>
