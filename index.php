@@ -85,10 +85,11 @@ echo "<BR>";
   
   // echo date("Y-m-d");
   
-	// $client = new GuzzleHttp\Client();
-	// $res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet("00000001")');
-	// $people = json_decode($res, true)['value'];
+	$client = new GuzzleHttp\Client();
+	$res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet("00000001")');
+	$people = json_decode($res, true)['value'];
 	// print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	echo $people[1); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	/* connect to the OData service  */
    $svc = new NorthwindEntities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV');
      
