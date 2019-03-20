@@ -1,7 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
 
+var service_url = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet('00000001')";
+$.ajax({
+                url: service_url,
+                type: 'GET',
+                dataType: 'json',
+     async: false,headers: { 'x-http-method': 'GET' },
+                username: "thanagone.ku",
+                password: "p@ssw0rd",
+                success: function (result) {
+                console.log(result);
+                },
+                error: function (error) {
+                console.log("error");
+                console.log(error);
+                    //deferred.reject(error);
+                }
+            });
+
+
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
 <?php
   echo "สวัสดี LINE BOT";
-echo "<BR>";
+  echo "<BR>";
 
 
 // echo $json;
@@ -104,7 +136,7 @@ echo "<BR>";
 	 echo '<BR>';
 	$host  =  "http://vms4ics.ics-th.com";
 	// Port
-	$port  =  8000;
+	$port  =  '8000';
 	// Login credentials
 	$params  =  [
 			"UserName"  =>  "thanagone.ku",
@@ -141,3 +173,6 @@ echo "<BR>";
    }
    
 ?>
+</body>
+</html>
+
