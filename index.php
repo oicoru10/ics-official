@@ -1,57 +1,60 @@
 <?php
+class SapTest {
+ const SAP_WSDL_URI  = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+ const SAP_USER =  'thanagone.ku';
+ const SAP_PWD  = 'p@ssw0rd';
+
+public function execute() {
+
+        $client = new SoapClient('http://'.urlencode(self::SAP_USER).':'.urldecode(self::SAP_PWD).'@'.self::SAP_WSDL_URI,
+                array("trace" => 1,
+                      "exceptions" => 1,
+                      "login" => self::SAP_USER,
+                      "password" => self::SAP_PWD,
+                      'features' => SOAP_SINGLE_ELEMENT_ARRAYS)
+        );
+
+        $method = '_-bic_-nf2';
+
+        $parameter = array('ETColumnDescription' => null,
+                           'ETGridData' => null,
+                           'ETMessageLog' => null,
+                           'ETRowDescription' => null,
+                           'ISVar_01xwerbet' => array('Sign' => 'I',
+                                                      'Option' => 'LE',
+                                                      'Low' => '3',
+                                                      'High' => null));
+
+        try
+        {
+
+        $result = $client->$method($parameter);
+        print_r($result);
+        } catch(SoapFault $e) {
+
+        echo "REQUEST HEADER:\n" . $client->__getLastRequestHeaders() . "\n";
+          echo "REQUEST:\n" . $client->__getLastRequest() . "\n";
+
+          echo "RESPONSE HEADER:\n" . $client->__getLastResponseHeaders() . "\n";
+
+          echo "RESPONSE:\n" . $client->__getLastResponse() . "\n";
+        print_r($e);
+    }
+
+
+}
+
+}
+
+$oSap = new SapTest();
+$oSap->execute();
+?>
+
+
+<?php
   echo "สวัสดี LINE BOT";
 echo "<BR>";
-// $access_token = 'tpTjAZ5RC1rcUiqnVXDeVgdQJ0f+u0zf9MOYZQGlRlcEk64J6zH+QBpeZiJNjcfcY2R/8a25i+Nuir5h1c1FT9gg7GLKRjmtplSoPvF7lAgiTvdNMoscrt8aCG3aAD1irfEQjjDY2o+52Oq74j0MmQdB04t89/1O/w1cDnyilFU=';
-// $userid = 'u1433d8e7fabdefa79463b15e1924b4d0';
-// $url = 'https://api.line.me/v2/bot/profile/'.$userid;
-// $headers = array('authorization: bearer ' . $access_token);
-// $ch = curl_init($url);
-// curl_setopt($ch, curlopt_returntransfer, true);
-// curl_setopt($ch, curlopt_httpheader, $headers);
-// curl_setopt($ch, curlopt_followlocation, 1);
-// $result = curl_exec($ch);
-// curl_close($ch);
-//echo "<BR>";
-//$ar = explode('"', $result, -1);
-//var_dump($ar);
-//echo "<BR>";
-//$array = json_decode( $result);
-//$testname = $array[0]['displayName'];
-//echo $testname;
-//echo "<BR>";
-//echo 'test';
-echo "<BR>";
-//$json_string = '[	{"productId":"epIJp9","name":"Product A","amount":"5","identifier":"242"},{"productId":"a93fHL","name":"Product B","amount":"2","identifier":"985"}]';
 
-//$array = json_decode($json_string);
-
-//foreach ($array as $value)
-//{
-   //echo $value->productId; // epIJp9
-   //echo $value->name; // Product A
-//}
-
-// $arraypostdata['messages'][0]['type'] = "text";
-// $arraypostdata['messages'][0]['text'] = "เลือกประเภทลา";
-
-// $arraypostdata['messages'][0]['quickReply']['items'][0]['type'] = "action";
-// $arraypostdata['messages'][0]['quickReply']['items'][0]['imageUrl'] = "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png";
-// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['type'] = "message";
-// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['label'] = "Message";
-// $arraypostdata['messages'][0]['quickReply']['items'][0]['action']['text'] = "ลาป่วย";
-
-// $arraypostdata['messages'][0]['quickReply']['items'][1]['type'] = "action";
-// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['type'] = "postback";
-// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['label'] = "Postback";
-// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['data'] = "action=buy&itemid=123";
-// $arraypostdata['messages'][0]['quickReply']['items'][1]['action']['displayText'] = "Buy";
-
-// $json_string = '[' . $result . ']';
-// $array = json_decode($json_string);
-
-// $data = json_encode($arraypostdata);
-// $json = 'apiBlockTicketRequest:'.$data;
-// echo $json;
 
 // echo $json;
 // $servername = "remotemysql.com:3306";
@@ -118,57 +121,25 @@ echo "<BR>";
 
 // /* commit the change on the server */        
     // $proxy->SaveChanges();
-	
-	function createSoapRequest(zipcode) {
-	var soapRequest = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" ' +
-		'xmlns:urn="urn:sap-com:document:sap:soap:functions:mc-style">' +
-			'<soapenv:Header/>' +
-   				'<soapenv:Body>' +
-	   				'<urn:WebServiceFunction>' +
-	   					'<Contact/>' +
-	   					'<Zipcode>' + zipcode + '</Zipcode>' +
-	   					'<Return/>' +
-	   				'</urn:WebServiceFunction>' +
-   				'</soapenv:Body>' +
-			'</soapenv:Envelope>';
- 
-	return soapRequest;
-}
- 
-/*
-The next thing we want to do is make your ajax call using the jQuery.ajax() function and pass the Soap Request. 
-Call this code within a function or event function (ex: $("#button").click(function() {}) )
-*/
- 
-var soapMessage = createSoapRequest(zipcode);
- 
-/*
-This isn't a real web service URL, just an example. 
-Sometimes the URL to SAP web services can be quite long so thats why I put it in a separate variable.
-*/
-var servicePath = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/";
- 
-$.ajax({
-	url: servicePath,
-	type: "OData",
-	dataType: "xml",
-	data: soapMessage,
-	username: "thanagone.ku",  // Most SAP web services require credentials
-	password: "p@ssw0rd",
-	success: function(results) {
-		parseXML(results);
-		$("div#detail").show();
-		$("div#enterzip").hide();
-	},
-	contentType: "text/xml; charset=utf-8"
-});
- 
-/*
-For readability I created a function called "parseXML" which will parse the XML returned from the web service and pull out the data I am interested in displaying.
-*/
- 
-function parseXML(xml) {
-    $(xml).find("item").each(function () {
-      // ... extract the pieces of information you want and update the div ...
-}
+	$SOAP_AUTH= array( 'login' => 'thanagone.ku', 'password' => 'p@ssw0rd');
+	#SpecifyWSDL
+	$WSDL="http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet";
+	#CreateClient Object, download and parse WSDL
+	$client= new SoapClient($WSDL,$SOAP_AUTH);
+	$HEAD_DATA= new stdClass();
+	$HEAD_DATA->EmployeeID = '00000001';
+	#Setup input parameters (SAP Likes to Capitalise the parameter names)
+	$params= array('HEADDATA' => $HEAD_DATA );
+	#Call Operation (Function). Catch and display any errors
+	try {
+	   $result = $client->StandardMaterialSaveData($params);
+	}catch(SoapFault $exception) {
+	   print "***Caught Exception***\n";
+	   print_r($exception);
+	   print "***END Exception***\n";
+	   die();
+	}
+	#Out the results
+	print_r($result);
+	error:SOAP-ERROR: Encoding: object has no 'HeadData' property
 ?>
