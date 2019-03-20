@@ -89,16 +89,16 @@ echo "<BR>";
 	$res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet("00000001")');
 	$people = json_decode($res, true)['value'];
 	// print_r($people[1]); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
-	echo $people[1); // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	/* connect to the OData service  */
-   $svc = new NorthwindEntities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV');
+   // $svc = new NorthwindEntities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV');
      
-/* get the list of Customers in the USA, for each customer get the list of Orders */
-    $query = $svc->GetEmployeeListSet();
-    $customerResponse = $query->Execute()
-						 ->filter("EmployeeID = '00000001'");
+// /* get the list of Customers in the USA, for each customer get the list of Orders */
+    // $query = $svc->GetEmployeeListSet();
+    // $customerResponse = $query->Execute()
+						 // ->filter("EmployeeID = '00000001'");
 	
-	echo $customerResponse[1];
+	// echo $customerResponse[1];
 
 // /* get only CustomerID and CustomerName */
     // $query = $svc->Customers()
