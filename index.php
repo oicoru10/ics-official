@@ -97,7 +97,7 @@ echo "<BR>";
     $customerResponse = $query->Execute()
 						 ->filter("EmployeeID = '00000001'");
 	
-	print_r($customerResponse[1]);
+	echo $customerResponse[1];
 
 // /* get only CustomerID and CustomerName */
     // $query = $svc->Customers()
