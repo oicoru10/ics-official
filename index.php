@@ -20,18 +20,20 @@
 		   // echo $people;
 	   // }
 	   
-require_once "Connect.php";
+	require_once "Connect.php";
    //connect
     $OData = new Z_WE_ASSCOCUSTOPENID_SRV_Entities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/') ;
 	$OData->Credential = new WindowsCredential('thanagone','p@ssw0rd');
    try
 {
-    //Create a Customer php Object
-    $OpenId = OpenId::CreateOpenId( "","",$_POST["Name"],$_POST["CustomerName"],$_POST["Code"]);
-    //inserting Customers object context tracking system
-    $OData->AddObject('OpenIdSet', $OpenId);
-   //SaveChange insert the object into data service
-   $Odata->SaveChanges();
+    // //Create a Customer php Object
+    // $OpenId = OpenId::CreateOpenId( "","",$_POST["Name"],$_POST["CustomerName"],$_POST["Code"]);
+    // //inserting Customers object context tracking system
+    // $OData->AddObject('OpenIdSet', $OpenId);
+	   // //SaveChange insert the object into data service
+	   // $Odata->SaveChanges();
+	   
+	 $result  = $Odata->getEntities();
 }
 catch(ODataServiceException $exception)
 {
