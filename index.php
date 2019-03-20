@@ -92,10 +92,10 @@ echo "<BR>";
 	// echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	/* connect to the OData service  */
 	
-	$client = new GuzzleHttp\Client();
-	$res = $client->request('GET', 'GET http://services.odata.org/TripPinRESTierService/People');
-	$people = json_decode($res, true)['value'];
-	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
+	// $client = new GuzzleHttp\Client();
+	// $res = $client->request('GET', 'GET http://services.odata.org/TripPinRESTierService/People');
+	// $people = json_decode($res, true)['value'];
+	// echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
    
 	// $svc = new NorthwindEntities('http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV');
      
@@ -118,5 +118,57 @@ echo "<BR>";
 
 // /* commit the change on the server */        
     // $proxy->SaveChanges();
-
+	
+	function createSoapRequest(zipcode) {
+	var soapRequest = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" ' +
+		'xmlns:urn="urn:sap-com:document:sap:soap:functions:mc-style">' +
+			'<soapenv:Header/>' +
+   				'<soapenv:Body>' +
+	   				'<urn:WebServiceFunction>' +
+	   					'<Contact/>' +
+	   					'<Zipcode>' + zipcode + '</Zipcode>' +
+	   					'<Return/>' +
+	   				'</urn:WebServiceFunction>' +
+   				'</soapenv:Body>' +
+			'</soapenv:Envelope>';
+ 
+	return soapRequest;
+}
+ 
+/*
+The next thing we want to do is make your ajax call using the jQuery.ajax() function and pass the Soap Request. 
+Call this code within a function or event function (ex: $("#button").click(function() {}) )
+*/
+ 
+var soapMessage = createSoapRequest(zipcode);
+ 
+/*
+This isn't a real web service URL, just an example. 
+Sometimes the URL to SAP web services can be quite long so thats why I put it in a separate variable.
+*/
+var servicePath = "http://service.url.com/sap/bc/srt/rfc/sap/zcrm_web_service/";
+ 
+$.ajax({
+	url: servicePath,
+	type: "OData",
+	dataType: "xml",
+	data: soapMessage,
+	username: "thanagone.ku",  // Most SAP web services require credentials
+	password: "p@ssw0rd",
+	success: function(results) {
+		parseXML(results);
+		$("div#detail").show();
+		$("div#enterzip").hide();
+	},
+	contentType: "text/xml; charset=utf-8"
+});
+ 
+/*
+For readability I created a function called "parseXML" which will parse the XML returned from the web service and pull out the data I am interested in displaying.
+*/
+ 
+function parseXML(xml) {
+    $(xml).find("item").each(function () {
+      // ... extract the pieces of information you want and update the div ...
+}
 ?>
