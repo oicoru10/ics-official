@@ -98,8 +98,9 @@
 		$arr = (array) $ob;
 		var_dump($arr);
 		echo "<BR>";
-		$xml_array = unserialize(serialize(json_decode(json_encode((array) $ob), 1)));
-		print_r($xml_array);
+		foreach($ob->content  as $node) {
+			echo $node['m:properties'];
+		}
    // }
    // else
    // {
