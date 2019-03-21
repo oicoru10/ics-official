@@ -67,8 +67,10 @@
    // $arrayHeader[] = "Content-Type: application/json";
    $arrayHeader[] = "Content-Type:  text/xml";
    // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   $arrayHeader[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
 	
-   $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+   // $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+   $url = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
    $ch = curl_init($url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
    curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
@@ -80,6 +82,7 @@
    if ( $Profile == null)
    {
 	   echo 'not connect';
+	   echo "<BR>";
 	   echo $result;
    }
    else
