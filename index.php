@@ -4,42 +4,72 @@
 
 <head>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<script src="../../../resources/sap-ui-core.js" id="sap-ui-bootstrap"
-
-          data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_mvi">
-
-</script>
 
 <!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
 
 <script>
 
-          // Tell UI5 where to find application content
-
-          // sap.ui.localResources("GetEmployeeListSet"); //view is the name of the folder where views are stored
-
-          jQuery.sap.registerModulePath('Application', 'Application');
-
-          // Launch application
-
-          jQuery.sap.require("Application");
-
-          var oApp = new Application( {
-
-                    root : "content"
-
-          }); // instantiate your application and mark the HTML element with id "content" as location for the UI
+pressBtn_oDataRead_multiple: function() {
+		
+		// var lv_oDataUrl = "proxy/http/<fioriHost>:8000//sap/opu/odata/sap/ZTEST_ODATA_SRV/"; //When running app from Eclipse
+		var lv_oDataUrl = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/"; //When running app from Eclipse
+		//var lv_oDataUrl = "/sap/opu/odata/sap/zmpq_sto_po_srv_srv/";		//When running app from FioriLaunchpad
+		
+		//var lv_OModel = new sap.ui.model.odata.ODataModel(lv_oDataUrl, true);
+		var lv_OModel = new sap.ui.model.odata.ODataModel(lv_oDataUrl, true, "thanagone.ku","p@ssw0rd");
+		sap.ui.getCore().setModel(lv_OModel);	
+	
+		var entitySet_url = lv_oDataUrl + "GetEmployeeListSet('00000001')";
+		
+		OData.read(entitySet_url, function(oResponse) {
+			
+			var output = JSON.stringify(oResponse.results);
+			
+			//Extract 'DcumentType' result
+			//var lv_NAVDOCTYP = oResponse.results[0].NAVDOCTYP;
+			var lv_NAVDOCTYP = oResponse.results[0].NAVDOCTYP.results;
+			var lv_NAVPURCHGRP = oResponse.results[0].NAVPURCHGRP.results;
+			var lv_NAVVENDOR = oResponse.results[0].NAVVENDOR.results; 
+			
+			var lv_msg = "DocumentType: " + JSON.stringify(lv_NAVDOCTYP)
+						+ "\nPurchaseGroup: " + JSON.stringify(lv_NAVPURCHGRP) 
+						+ "\nVendorList:" + JSON.stringify(lv_NAVVENDOR);
+			
+			
+			//To display result in pop-up
+			sap.m.MessageBox.show( "Data Received \n" + lv_msg, {
+			 	icon: sap.m.MessageBox.Icon.SUCCESS,
+		        title: "oData Response",				       			      
+		        onClose: function(oAction) {				        	
+				     //do somthing if required   	
+		    }});			
+		}, function(err) {	
+			
+			var lvErrTxt = err.message;
+			sap.m.MessageBox.show( "OData Response: " + lvErrTxt, {
+			 	icon: sap.m.MessageBox.Icon.ERROR,
+		        title: "Do you want to try again ?",
+		        actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],			      
+		        onClose: function(oAction) {			    		
+		        	 if ( oAction === sap.m.MessageBox.Action.YES ) { 		        		
+		        		//If Yes clicked, one more chance to try again	 
+		        	 }
+		        	 if ( oAction === sap.m.MessageBox.Action.NO ) { 
+		        		//If No clicked, then Cancel
+		        	 }		        	
+		   }});	//MessageBox close
+		});  	//End of OData Service Call
+		
+	},
 
 </script>
 
 </head>
 
-<body class="sapUiBody" role="application">
-
-<div id="content"></div>
-
+<body>
+	
+	<input type="button" text="Click" onclick="pressBtn_oDataRead_multiple" />
+	
 </body>
 
 </html>
