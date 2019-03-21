@@ -61,25 +61,25 @@
 	// ];
 
 	
-   $content = file_get_contents('php://input');
-   $arrayJson = json_decode($content, true);
-   $arrayHeader = array();
+   $content_od = file_get_contents('php://input');
+   $arrayJson_od = json_decode($content_od, true);
+   $arrayHeader_od = array();
    // $arrayHeader[] = "Content-Type: application/json";
-   $arrayHeader[] = "Content-Type:  application/xml";
+   $arrayHeader_od[] = "Content-Type:  application/xml";
    // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-   $arrayHeader[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
+   $arrayHeader_od[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
 	
    // $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
-   $url = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
-   $ch = curl_init($url);
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
-   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-   $result = curl_exec($ch);
-   curl_close($ch);
-   $ob = simplexml_load_string($result);
-   $json_string = '[' . $result . ']';
-   $Profile = json_decode($json_string);
+   $url_od = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+   $ch_od = curl_init($url_od);
+   curl_setopt($ch_od, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($ch_od, CURLOPT_HTTPHEADER, $arrayHeader_od);
+   curl_setopt($ch_od, CURLOPT_FOLLOWLOCATION, 1);
+   $result_od = curl_exec($ch_od);
+   curl_close($ch_od);
+   $ob = simplexml_load_string($result_od);
+   // $json_string = '[' . $result . ']';
+   // $Profile = json_decode($json_string);
    // if ( $ob == null)
    // {
 	   // echo 'not connect';
@@ -104,27 +104,8 @@
 			foreach ($nsd as $key => $val) {
 				echo "<BR>";
 					echo "{$key}: {$val}";
-				// echo "<BR>";
-				// echo "EmployeeID : " . $va["EmployeeID"];
-				// echo "<BR>";
-				// echo "Firstname : " . $va["Firstname"];
-				// echo "<BR>";
-				// echo "Lastname : " . $va["Lastname"];
-				// echo "<BR>";
-				// echo "Nickname : " . $va["Nickname"];
-				// echo "<BR>";
-				// echo "Tel : " . $va["Tel"];
-				// echo "<BR>";
-				// echo "Email : " . $va["Email"];
-				// echo "<BR>";
-				// echo "Birthdate : " . $va["Birthdate"];
-				// echo "<BR>";
-				// echo "Position : " . $va["Position"];
-				// echo "<BR>";
-				// echo "Line : " . $va["Line"];
-				// echo "<BR>";
 			}
-			print_r($nsd); 
+			// print_r($nsd); 
 		}
 		// echo "<BR>";
 		// $arr = (array) $ob;
