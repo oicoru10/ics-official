@@ -89,9 +89,11 @@
 	   echo $ob;
 	   echo "<BR>";
 	   foreach ($ob->entry as $element) {
-			foreach($element->children() as $key => $val) {
-				echo "<BR>";
-				echo "{$key}: {$val}";
+			foreach($element->children() as $con) {
+				foreach($con->children() as $key => $val) {
+					echo "<BR>";
+					echo "{$key}: {$val}";
+				}
 			}
 		}
 		echo "<BR>";
