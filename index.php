@@ -9,7 +9,7 @@
 
 <script>
 
-pressBtn_oDataRead_multiple: function() {
+	function pressBtn_oDataRead_multiple() {
 		
 		// var lv_oDataUrl = "proxy/http/<fioriHost>:8000//sap/opu/odata/sap/ZTEST_ODATA_SRV/"; //When running app from Eclipse
 		var lv_oDataUrl = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/"; //When running app from Eclipse
