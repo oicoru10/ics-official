@@ -476,7 +476,7 @@
 		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
 		pushMsg($arrayHeader,$arrayPostData);
    }
-   ELSEIF( strpos($message, 'Name') !== false  OR strpos($message, 'NickName') !== false )
+   ELSEIF( strpos($message, 'Name') !== false  OR strpos($message, 'Nickname') !== false )
 	{
 		   $content_od = file_get_contents('php://input');
 		   $arrayJson_od = json_decode($content_od, true);
