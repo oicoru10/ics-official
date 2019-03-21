@@ -82,11 +82,11 @@
    $Profile = json_decode($json_string);
    // if ( $ob == null)
    // {
-	   echo 'not connect';
-	   echo "<BR>";
-	   echo $result;
-	   echo "<BR>";
-	   echo $ob;
+	   // echo 'not connect';
+	   // echo "<BR>";
+	   // echo $result;
+	   // echo "<BR>";
+	   // echo $ob;
 	   echo "<BR>";
 	   // foreach ($ob->entry as $element) {
 			// foreach($element->children() as $con) {
@@ -100,16 +100,12 @@
 			echo $item->updated;
 			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
 			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
-			print_r($ns->properties); 
+			// print_r($ns->properties); 
 			print_r($nsd); 
 		}
-		echo "<BR>";
-		$arr = (array) $ob;
-		var_dump($arr);
-		echo "<BR>";
-		foreach($ob->content  as $node) {
-			echo $node['m:properties'];
-		}
+		// echo "<BR>";
+		// $arr = (array) $ob;
+		// var_dump($arr);
    // }
    // else
    // {
