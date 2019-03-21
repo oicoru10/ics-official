@@ -2,10 +2,6 @@
 <?php
   echo "สวัสดี LINE BOT";
   echo "<BR>";
-	$client = new GuzzleHttp\Client();
-	$res = $client->request('GET', 'GET http://services.odata.org/TripPinRESTierService/People');
-	$people = json_decode($res, true)['value'];
-	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	 // echo '<BR>';
 	// $client = new GuzzleHttp\Client();
 	// $res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
@@ -71,27 +67,23 @@
    // $arrayHeader[] = "Content-Type: application/json";
    // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 	
-   // $url = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
-   // $ch = curl_init($url);
-   // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   // curl_setopt($ch,  CURLOPT_SSL_VERIFYPEER,  false);
-   // curl_setopt($ch,  CURLOPT_VERBOSE,  1);
-   // curl_setopt($ch,  CURLOPT_POST,  true);
-   // curl_setopt($ch,  CURLOPT_POSTFIELDS,  json_encode($params));
-   // // curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
-   // // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-   // $result = curl_exec($ch);
-   // curl_close($ch);
-   // $json_string = '[' . $result . ']';
-   // $Profile = json_decode($json_string);
-   // if ( $Profile == null)
-   // {
-	   // echo 'not connect';
-   // }
-   // else
-   // {
-	   // echo $Profile;
-   // }
+   $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+   $ch = curl_init($url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+   $result = curl_exec($ch);
+   curl_close($ch);
+   $json_string = '[' . $result . ']';
+   $Profile = json_decode($json_string);
+   if ( $Profile == null)
+   {
+	   echo 'not connect';
+   }
+   else
+   {
+	   echo $Profile;
+   }
    
 ?>
 
