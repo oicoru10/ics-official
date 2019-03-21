@@ -101,26 +101,28 @@
 			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
 			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
 			// print_r($ns->properties); 
-			foreach ($nsd as $va) {
+			foreach ($nsd as $key => $val) {
 				echo "<BR>";
-				echo "EmployeeID : " . $va["EmployeeID"];
-				echo "<BR>";
-				echo "Firstname : " . $va["Firstname"];
-				echo "<BR>";
-				echo "Lastname : " . $va["Lastname"];
-				echo "<BR>";
-				echo "Nickname : " . $va["Nickname"];
-				echo "<BR>";
-				echo "Tel : " . $va["Tel"];
-				echo "<BR>";
-				echo "Email : " . $va["Email"];
-				echo "<BR>";
-				echo "Birthdate : " . $va["Birthdate"];
-				echo "<BR>";
-				echo "Position : " . $va["Position"];
-				echo "<BR>";
-				echo "Line : " . $va["Line"];
-				echo "<BR>";
+					echo "{$key}: {$val}";
+				// echo "<BR>";
+				// echo "EmployeeID : " . $va["EmployeeID"];
+				// echo "<BR>";
+				// echo "Firstname : " . $va["Firstname"];
+				// echo "<BR>";
+				// echo "Lastname : " . $va["Lastname"];
+				// echo "<BR>";
+				// echo "Nickname : " . $va["Nickname"];
+				// echo "<BR>";
+				// echo "Tel : " . $va["Tel"];
+				// echo "<BR>";
+				// echo "Email : " . $va["Email"];
+				// echo "<BR>";
+				// echo "Birthdate : " . $va["Birthdate"];
+				// echo "<BR>";
+				// echo "Position : " . $va["Position"];
+				// echo "<BR>";
+				// echo "Line : " . $va["Line"];
+				// echo "<BR>";
 			}
 			print_r($nsd); 
 		}
