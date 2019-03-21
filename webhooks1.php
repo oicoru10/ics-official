@@ -419,15 +419,31 @@
 		   $ob = simplexml_load_string($result_od);
 		   
 		   foreach ($ob->entry as $item) {
-			echo $item->updated;
+			// echo $item->updated;
 			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
 			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
 			// print_r($ns->properties); 
+			
+			$filter = explode(" ", $message);
 			foreach ($nsd as $key => $val) {
-				$arrayPostData['to'] = $idTo;
-				$arrayPostData['messages'][0]['type'] = "text";
-				$arrayPostData['messages'][0]['text'] = $key . " : " . $val;
-				pushMsg($arrayHeader,$arrayPostData);
+				if($key == 'EmployeeID')
+				{
+					if($filter[1] == $val)
+					{
+						$chk = 'X';
+					}
+					else
+					{
+						$chk = '';
+					}
+				}
+				if($chk == 'X')
+				{
+					$arrayPostData['to'] = $idTo;
+					$arrayPostData['messages'][0]['type'] = "text";
+					$arrayPostData['messages'][0]['text'] = $key . " : " . $val;
+					pushMsg($arrayHeader,$arrayPostData);
+				}
 			}
 			// print_r($nsd); 
 		}
