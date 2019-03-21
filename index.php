@@ -86,7 +86,7 @@
 	   echo "<BR>";
 	   echo $result;
 	   echo "<BR>";
-	   foreach ($ob->Formula as $element) {
+	   foreach ($ob->entry as $element) {
 			foreach($element->children() as $key => $val) {
 				echo "{$key}: {$val}";
 			}
