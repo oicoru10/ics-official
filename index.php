@@ -86,7 +86,11 @@
 	   echo "<BR>";
 	   echo $result;
 	   echo "<BR>";
-	   print_r($ob->xpath('/<entry>'));
+	   foreach ($ob->Formula as $element) {
+			foreach($element->children() as $key => $val) {
+				echo "{$key}: {$val}";
+			}
+		}
    // }
    // else
    // {
