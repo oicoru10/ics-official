@@ -64,7 +64,8 @@
    $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
    $arrayHeader = array();
-   $arrayHeader[] = "Content-Type: application/json";
+   // $arrayHeader[] = "Content-Type: application/json";
+   $arrayHeader[] = "Content-Type:  text/xml";
    // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 	
    $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
