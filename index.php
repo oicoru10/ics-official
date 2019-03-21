@@ -77,19 +77,20 @@
    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
    $result = curl_exec($ch);
    curl_close($ch);
-   $ob= simplexml_load_string($result);
+   $ob = simplexml_load_string($result);
    $json_string = '[' . $result . ']';
    $Profile = json_decode($json_string);
-   if ( $ob == null)
-   {
+   // if ( $ob == null)
+   // {
 	   echo 'not connect';
 	   echo "<BR>";
 	   echo $result;
-   }
-   else
-   {
 	   echo $ob;
-   }
+   // }
+   // else
+   // {
+	   // echo $ob;
+   // }
    
 ?>
 
