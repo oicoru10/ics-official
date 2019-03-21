@@ -476,7 +476,7 @@
 		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
 		pushMsg($arrayHeader,$arrayPostData);
    }
-   ELSEIF( strpos($message, 'Name') !== false OR strpos($message, 'NickName') !== false)
+   ELSEIF( strpos($message, 'Name') !== false OR strpos($message, 'NickName') !== false )
 	{
 		   $content_od = file_get_contents('php://input');
 		   $arrayJson_od = json_decode($content_od, true);
@@ -496,14 +496,8 @@
 		   curl_close($ch_od);
 		   $ob = simplexml_load_string($result_od);
 		   
-		   foreach ($ob->entry as $item) {
-			// echo $item->updated;
-			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
-			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
-			// print_r($ns->properties); 
-			
-			$filter = explode(" ", $message);
-			if($filter[0] == "Name")
+		   $filter = explode(" ", $message);
+			if( $filter[0] == 'Name')
 			{
 				$comm = "Firstname";
 			}
@@ -511,6 +505,14 @@
 			{
 				$comm = "Nickname";
 			}
+			
+		   foreach ($ob->entry as $item) {
+			// echo $item->updated;
+			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
+			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
+			// print_r($ns->properties); 
+			
+			
 			foreach ($nsd as $key => $val) {
 				if($key == $comm)
 				{
@@ -547,7 +549,7 @@
 		}
 		$arrayPostData['to'] = $idTo;
 		$arrayPostData['messages'][0]['type'] = "text";
-		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email;
+		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
 		pushMsg($arrayHeader,$arrayPostData);
 	}
    ELSE
