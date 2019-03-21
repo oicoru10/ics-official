@@ -398,7 +398,10 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
     }
-	
+	ELSEIF( strpos($message, 'SAP') !== false )
+	{
+		
+	}
    ELSE
      {
       $arrayPostData['to'] = $idTo;
