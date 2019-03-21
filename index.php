@@ -85,7 +85,8 @@
 	   echo 'not connect';
 	   echo "<BR>";
 	   echo $result;
-	   echo $ob;
+	   echo "<BR>";
+	   print_r($ob);
    // }
    // else
    // {
