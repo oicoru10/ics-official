@@ -79,6 +79,7 @@
    if ( $Profile == null)
    {
 	   echo 'not connect';
+	   echo $result;
    }
    else
    {
