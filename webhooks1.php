@@ -454,9 +454,15 @@
 		$arrayPostData['messages'][0]['type'] = "text";
 		$arrayPostData['messages'][0]['text'] = "Name";
 		pushMsg($arrayHeader,$arrayPostData);
+		
 		$arrayPostData['to'] = $idTo;
 		$arrayPostData['messages'][0]['type'] = "text";
 		$arrayPostData['messages'][0]['text'] = "NickName";
+		pushMsg($arrayHeader,$arrayPostData);
+		
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "Sample command";
 		pushMsg($arrayHeader,$arrayPostData);
    }
    elseif( strpos($message, 'Sample command') !== false )
@@ -470,6 +476,74 @@
 		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
 		pushMsg($arrayHeader,$arrayPostData);
    }
+   ELSEIF( strpos($message, 'Name') !== false )
+	{
+		   $content_od = file_get_contents('php://input');
+		   $arrayJson_od = json_decode($content_od, true);
+		   $arrayHeader_od = array();
+		   // $arrayHeader[] = "Content-Type: application/json";
+		   $arrayHeader_od[] = "Content-Type:  application/xml";
+		   // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+		   $arrayHeader_od[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
+			
+		   // $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $url_od = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $ch_od = curl_init($url_od);
+		   curl_setopt($ch_od, CURLOPT_RETURNTRANSFER, true);
+		   curl_setopt($ch_od, CURLOPT_HTTPHEADER, $arrayHeader_od);
+		   curl_setopt($ch_od, CURLOPT_FOLLOWLOCATION, 1);
+		   $result_od = curl_exec($ch_od);
+		   curl_close($ch_od);
+		   $ob = simplexml_load_string($result_od);
+		   
+		   foreach ($ob->entry as $item) {
+			// echo $item->updated;
+			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
+			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
+			// print_r($ns->properties); 
+			
+			$filter = explode(" ", $message);
+			foreach ($nsd as $key => $val) {
+				if($key == 'Firstname')
+				{
+					if($filter[1] == $val)
+					{
+						$chk = 'X';
+					}
+					else
+					{
+						$chk = '';
+					}
+				}
+				if($chk == 'X')
+				{
+					switch($key)
+					{
+						case "Firstname":
+							$f_name = $val;
+						 break;
+						case "Lastname":
+							$l_name = $val;
+						 break;
+						case "Tel":
+							$Tel = $val;
+						 break;
+						case "Email":
+							$Email = $val;
+						 break;
+					}
+					
+					
+				}
+			}
+			
+			$arrayPostData['to'] = $idTo;
+			$arrayPostData['messages'][0]['type'] = "text";
+			$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email;
+			pushMsg($arrayHeader,$arrayPostData);
+			// print_r($nsd); 
+		}
+	}
    ELSE
      {
       $arrayPostData['to'] = $idTo;
