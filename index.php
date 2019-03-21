@@ -3,7 +3,7 @@
   echo "สวัสดี LINE BOT";
   echo "<BR>";
 	$client = new GuzzleHttp\Client();
-	$res = $client->request('GET', 'GET http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
+	$res = $client->request('GET', 'GET http://services.odata.org/TripPinRESTierService/People');
 	$people = json_decode($res, true)['value'];
 	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	 // echo '<BR>';
