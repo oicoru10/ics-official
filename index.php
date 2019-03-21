@@ -1,80 +1,11 @@
-<!DOCTYPE HTML>
 
-<html>
-
-<head>
-
-
-<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
-
-<script>
-
-	function pressBtn_oDataRead_multiple() {
-		
-		// var lv_oDataUrl = "proxy/http/<fioriHost>:8000//sap/opu/odata/sap/ZTEST_ODATA_SRV/"; //When running app from Eclipse
-		var lv_oDataUrl = "http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/"; //When running app from Eclipse
-		//var lv_oDataUrl = "/sap/opu/odata/sap/zmpq_sto_po_srv_srv/";		//When running app from FioriLaunchpad
-		
-		//var lv_OModel = new sap.ui.model.odata.ODataModel(lv_oDataUrl, true);
-		var lv_OModel = new sap.ui.model.odata.ODataModel(lv_oDataUrl, true, "thanagone.ku","p@ssw0rd");
-		sap.ui.getCore().setModel(lv_OModel);	
-	
-		var entitySet_url = lv_oDataUrl + "GetEmployeeListSet('00000001')";
-		
-		OData.read(entitySet_url, function(oResponse) {
-			
-			var output = JSON.stringify(oResponse.results);
-			
-			//Extract 'DcumentType' result
-			//var lv_NAVDOCTYP = oResponse.results[0].NAVDOCTYP;
-			var lv_NAVDOCTYP = oResponse.results[0].NAVDOCTYP.results;
-			var lv_NAVPURCHGRP = oResponse.results[0].NAVPURCHGRP.results;
-			var lv_NAVVENDOR = oResponse.results[0].NAVVENDOR.results; 
-			
-			var lv_msg = "DocumentType: " + JSON.stringify(lv_NAVDOCTYP)
-						+ "\nPurchaseGroup: " + JSON.stringify(lv_NAVPURCHGRP) 
-						+ "\nVendorList:" + JSON.stringify(lv_NAVVENDOR);
-			
-			
-			//To display result in pop-up
-			sap.m.MessageBox.show( "Data Received \n" + lv_msg, {
-			 	icon: sap.m.MessageBox.Icon.SUCCESS,
-		        title: "oData Response",				       			      
-		        onClose: function(oAction) {				        	
-				     //do somthing if required   	
-		    }});			
-		}, function(err) {	
-			
-			var lvErrTxt = err.message;
-			sap.m.MessageBox.show( "OData Response: " + lvErrTxt, {
-			 	icon: sap.m.MessageBox.Icon.ERROR,
-		        title: "Do you want to try again ?",
-		        actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],			      
-		        onClose: function(oAction) {			    		
-		        	 if ( oAction === sap.m.MessageBox.Action.YES ) { 		        		
-		        		//If Yes clicked, one more chance to try again	 
-		        	 }
-		        	 if ( oAction === sap.m.MessageBox.Action.NO ) { 
-		        		//If No clicked, then Cancel
-		        	 }		        	
-		   }});	//MessageBox close
-		});  	//End of OData Service Call
-		
-	},
-
-</script>
-
-</head>
-
-<body>
-	<button onclick="pressBtn_oDataRead_multiple()">Click me</button>
-</body>
-
-</html>
 <?php
   echo "สวัสดี LINE BOT";
   echo "<BR>";
-
+	$client = new GuzzleHttp\Client();
+	$res = $client->request('GET', 'GET http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
+	$people = json_decode($res, true)['value'];
+	echo $people; // ["UserName" => "russellwhyte", "FirstName" => "Russell" ...]
 	 // echo '<BR>';
 	// $client = new GuzzleHttp\Client();
 	// $res = $client->request('GET', 'GET http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet');
