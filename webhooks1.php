@@ -476,7 +476,7 @@
 		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
 		pushMsg($arrayHeader,$arrayPostData);
    }
-   ELSEIF( strpos($message, 'Name') !== false ) // OR strpos($message, 'NickName') !== false )
+   ELSEIF( strpos($message, 'Name') !== false  OR strpos($message, 'NickName') !== false )
 	{
 		   $content_od = file_get_contents('php://input');
 		   $arrayJson_od = json_decode($content_od, true);
@@ -533,32 +533,33 @@
 					{
 						case 'Firstname' :
 							$f_name = $val;
-						 break;
+							break;
 						case 'Lastname' :
 							$l_name = $val;
-						 break;
+							break;
 						case 'Tel' :
 							$Tel = $val;
-						 break;
+							break;
 						case 'Email' :
 							$Email = $val;
-						 break;
+							break;
 					}
 					
 				}
 			}
 			// print_r($nsd); 
 		}
+		
 		$arrayPostData['to'] = $idTo;
 		$arrayPostData['messages'][0]['type'] = "text";
-		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
+		$arrayPostData['messages'][0]['text'] = "ชื่อ " . $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
 		pushMsg($arrayHeader,$arrayPostData);
 	}
    ELSE
      {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "ไม่มี Code ส่วนนี้อยู๋";
+      $arrayPostData['messages'][0]['text'] = "ไม่มี Command ส่วนนี้";
       pushMsg($arrayHeader,$arrayPostData);
     }
    }
