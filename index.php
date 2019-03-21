@@ -18,7 +18,7 @@
 
           // Tell UI5 where to find application content
 
-          sap.ui.localResources("GetEmployeeListSet"); //view is the name of the folder where views are stored
+          // sap.ui.localResources("GetEmployeeListSet"); //view is the name of the folder where views are stored
 
           jQuery.sap.registerModulePath('Application', 'Application');
 
