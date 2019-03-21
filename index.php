@@ -96,7 +96,7 @@
 				// }
 			// }
 		// }
-		foreach ($xml->entry as $item) {
+		foreach ($ob->entry as $item) {
 			echo $item->updated;
 			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
 			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
