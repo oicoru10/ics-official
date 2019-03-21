@@ -68,7 +68,7 @@ pressBtn_oDataRead_multiple: function() {
 
 <body>
 	
-	<input type="button" text="Click" onclick="pressBtn_oDataRead_multiple" />
+	<input type="button" text="Click" onclick="pressBtn_oDataRead_multiple()" />
 	
 </body>
 
