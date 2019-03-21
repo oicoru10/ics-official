@@ -86,11 +86,17 @@
 	   echo "<BR>";
 	   echo $result;
 	   echo "<BR>";
+	   echo $ob;
+	   echo "<BR>";
 	   foreach ($ob->content as $element) {
 			foreach($element->children() as $key => $val) {
+				echo "<BR>";
 				echo "{$key}: {$val}";
 			}
 		}
+		echo "<BR>";
+		$arr = (array) $ob;
+		var_dump($arr);
    // }
    // else
    // {
