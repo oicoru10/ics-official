@@ -67,9 +67,7 @@
 </head>
 
 <body>
-	
-	<input type="button" text="Click" onclick="pressBtn_oDataRead_multiple()" />
-	
+	<button onclick="pressBtn_oDataRead_multiple()">Click me</button>
 </body>
 
 </html>
