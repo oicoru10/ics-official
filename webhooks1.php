@@ -400,7 +400,37 @@
     }
 	ELSEIF( strpos($message, 'SAP') !== false )
 	{
-		
+		   $content_od = file_get_contents('php://input');
+		   $arrayJson_od = json_decode($content_od, true);
+		   $arrayHeader_od = array();
+		   // $arrayHeader[] = "Content-Type: application/json";
+		   $arrayHeader_od[] = "Content-Type:  application/xml";
+		   // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+		   $arrayHeader_od[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
+			
+		   // $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $url_od = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $ch_od = curl_init($url_od);
+		   curl_setopt($ch_od, CURLOPT_RETURNTRANSFER, true);
+		   curl_setopt($ch_od, CURLOPT_HTTPHEADER, $arrayHeader_od);
+		   curl_setopt($ch_od, CURLOPT_FOLLOWLOCATION, 1);
+		   $result_od = curl_exec($ch_od);
+		   curl_close($ch_od);
+		   $ob = simplexml_load_string($result_od);
+		   
+		   foreach ($ob->entry as $item) {
+			echo $item->updated;
+			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
+			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
+			// print_r($ns->properties); 
+			foreach ($nsd as $key => $val) {
+				$arrayPostData['to'] = $idTo;
+				$arrayPostData['messages'][0]['type'] = "text";
+				$arrayPostData['messages'][0]['text'] = $key . " : " . $val;
+				pushMsg($arrayHeader,$arrayPostData);
+			}
+			// print_r($nsd); 
+		}
 	}
    ELSE
      {
