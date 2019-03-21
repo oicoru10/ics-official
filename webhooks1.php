@@ -549,11 +549,20 @@
 			}
 			// print_r($nsd); 
 		}
-		
-		$arrayPostData['to'] = $idTo;
-		$arrayPostData['messages'][0]['type'] = "text";
-		$arrayPostData['messages'][0]['text'] = "ชื่อ " . $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
-		pushMsg($arrayHeader,$arrayPostData);
+		if( $f_name == null)
+		{
+			$arrayPostData['to'] = $idTo;
+			$arrayPostData['messages'][0]['type'] = "text";
+			$arrayPostData['messages'][0]['text'] = "ไม่พบข้อมูล  " . $filter[1] ;
+			pushMsg($arrayHeader,$arrayPostData);
+		}
+		else
+		{
+			$arrayPostData['to'] = $idTo;
+			$arrayPostData['messages'][0]['type'] = "text";
+			$arrayPostData['messages'][0]['text'] = "ชื่อ " . $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
+			pushMsg($arrayHeader,$arrayPostData);
+		}
 	}
    ELSE
      {
