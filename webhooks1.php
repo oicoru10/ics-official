@@ -476,7 +476,7 @@
 		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
 		pushMsg($arrayHeader,$arrayPostData);
    }
-   ELSEIF( strpos($message, 'Name') !== false )
+   ELSEIF( strpos($message, 'Name') !== false OR strpos($message, 'NickName') !== false)
 	{
 		   $content_od = file_get_contents('php://input');
 		   $arrayJson_od = json_decode($content_od, true);
@@ -503,8 +503,16 @@
 			// print_r($ns->properties); 
 			
 			$filter = explode(" ", $message);
+			if($filter[0] == "Name")
+			{
+				$comm = "Firstname";
+			}
+			else
+			{
+				$comm = "Nickname";
+			}
 			foreach ($nsd as $key => $val) {
-				if($key == 'Firstname')
+				if($key == $comm)
 				{
 					if($filter[1] == $val)
 					{
