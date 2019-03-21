@@ -88,7 +88,7 @@
 	   echo "<BR>";
 	   echo $ob;
 	   echo "<BR>";
-	   foreach ($ob->content as $element) {
+	   foreach ($ob->entry as $element) {
 			foreach($element->children() as $key => $val) {
 				echo "<BR>";
 				echo "{$key}: {$val}";
