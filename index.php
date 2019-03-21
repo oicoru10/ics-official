@@ -65,7 +65,7 @@
    $arrayJson = json_decode($content, true);
    $arrayHeader = array();
    // $arrayHeader[] = "Content-Type: application/json";
-   $arrayHeader[] = "Content-Type:  text/xml";
+   $arrayHeader[] = "Content-Type:  application/xml";
    // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    $arrayHeader[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
 	
@@ -86,7 +86,7 @@
 	   echo "<BR>";
 	   echo $result;
 	   echo "<BR>";
-	   foreach ($ob->entry as $element) {
+	   foreach ($ob->content as $element) {
 			foreach($element->children() as $key => $val) {
 				echo "{$key}: {$val}";
 			}
