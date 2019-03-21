@@ -549,7 +549,8 @@
 		}
 		$arrayPostData['to'] = $idTo;
 		$arrayPostData['messages'][0]['type'] = "text";
-		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
+		// $arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email ;
+		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name  ;
 		pushMsg($arrayHeader,$arrayPostData);
 	}
    ELSE
