@@ -527,30 +527,28 @@
 				{
 					switch($key)
 					{
-						case "Firstname":
+						case 'Firstname' :
 							$f_name = $val;
 						 break;
-						case "Lastname":
+						case 'Lastname' :
 							$l_name = $val;
 						 break;
-						case "Tel":
+						case 'Tel' :
 							$Tel = $val;
 						 break;
-						case "Email":
+						case 'Email' :
 							$Email = $val;
 						 break;
 					}
 					
-					
 				}
 			}
-			
-			$arrayPostData['to'] = $idTo;
-			$arrayPostData['messages'][0]['type'] = "text";
-			$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email;
-			pushMsg($arrayHeader,$arrayPostData);
 			// print_r($nsd); 
 		}
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "ชื่อ " $f_name . " " . $l_name . " โทร " . $Tel . " E-mail " . $Email;
+		pushMsg($arrayHeader,$arrayPostData);
 	}
    ELSE
      {
