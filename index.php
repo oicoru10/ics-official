@@ -86,7 +86,7 @@
 	   echo "<BR>";
 	   echo $result;
 	   echo "<BR>";
-	   print_r($ob);
+	   print_r($ob->xpath('/ROOT'));
    // }
    // else
    // {
