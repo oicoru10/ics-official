@@ -448,11 +448,33 @@
 			// print_r($nsd); 
 		}
 	}
+   elseif( strpos($message, 'help') !== false )
+   {
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "Name";
+		pushMsg($arrayHeader,$arrayPostData);
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "NickName";
+		pushMsg($arrayHeader,$arrayPostData);
+   }
+   elseif( strpos($message, 'Sample command') !== false )
+   {
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "Name " . "ชื่อ";
+		pushMsg($arrayHeader,$arrayPostData);
+		$arrayPostData['to'] = $idTo;
+		$arrayPostData['messages'][0]['type'] = "text";
+		$arrayPostData['messages'][0]['text'] = "NickName " . "ชื่อเล่น";
+		pushMsg($arrayHeader,$arrayPostData);
+   }
    ELSE
      {
       $arrayPostData['to'] = $idTo;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "ไม่มี Code ส่วนนี้อยู๋๋๋๋๋๋";
+      $arrayPostData['messages'][0]['text'] = "ไม่มี Code ส่วนนี้อยู๋";
       pushMsg($arrayHeader,$arrayPostData);
     }
    }
