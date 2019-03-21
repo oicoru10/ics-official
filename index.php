@@ -88,21 +88,15 @@
 	   echo "<BR>";
 	   echo $ob;
 	   echo "<BR>";
-	   foreach ($ob->entry as $element) {
-			foreach($element->children() as $con) {
-				foreach($con->children() as $key => $val) {
-					echo "<BR>";
-					echo "{$key}: {$val}";
-				}
-			}
+	   foreach ($ob->entry as $item) {
+			echo $item->updated . PHP_EOL;
+			$ns = $item->content->children('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'); 
+			print_r($ns->properties); 
 		}
 		echo "<BR>";
 		$arr = (array) $ob;
 		var_dump($arr);
 		echo "<BR>";
-		foreach($ob->content  as $node) {
-			echo $node['m:properties'];
-		}
    // }
    // else
    // {
