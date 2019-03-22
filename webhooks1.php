@@ -515,20 +515,7 @@
 			
 			
 			foreach ($nsd as $key => $val) {
-				if($key == $comm)
-				{
-					if($filter[1] == $val)
-					{
-						$chk = 'X';
-					}
-					else
-					{
-						$chk = '';
-					}
-				}
 				
-				if($chk == 'X')
-				{
 					switch ($key)
 					{
 						case 'Firstname' :
@@ -543,11 +530,44 @@
 						case 'Email' :
 							$Email = $val;
 							break;
+						case 'Nickname' :
+							$Nickname = $val;
+							break;
 					}
-					
-				}
+				
 			}
 			// print_r($nsd); 
+			if($comm == "Firstname")
+			{
+				if($filter[1] == $f_name)
+				{
+					$chk = 'X';
+				}
+				else
+				{
+					$chk = '';
+				}
+			}
+			else
+			{
+				if($filter[1] == $$Nickname)
+				{
+					$chk = 'X';
+				}
+				else
+				{
+					$chk = '';
+				}
+			}
+			
+			if($chk == '')
+			{
+				$f_name = '';
+			}
+			else
+			{
+				break;
+			}
 		}
 		if( $f_name == null)
 		{
