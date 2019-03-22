@@ -513,60 +513,50 @@
 			$nsd = $ns->properties->children("http://schemas.microsoft.com/ado/2007/08/dataservices");
 			// print_r($ns->properties); 
 			
-			
-			foreach ($nsd as $key => $val) {
-				
-					switch ($key)
-					{
-						case 'Firstname' :
-							$f_name = $val;
-							break;
-						case 'Lastname' :
-							$l_name = $val;
-							break;
-						case 'Tel' :
-							$Tel = $val;
-							break;
-						case 'Email' :
-							$Email = $val;
-							break;
-						case 'Nickname' :
-							$Nickname = $val;
-							break;
-					}
-				
-			}
-			// print_r($nsd); 
-			if($comm == "Firstname")
-			{
-				if($filter[1] == $f_name)
-				{
-					$chk = 'X';
-				}
-				else
-				{
-					$chk = '';
-				}
-			}
-			else
-			{
-				if($filter[1] == $$Nickname)
-				{
-					$chk = 'X';
-				}
-				else
-				{
-					$chk = '';
-				}
-			}
-			
 			if($chk == '')
 			{
-				$f_name = '';
-			}
-			else
-			{
-				break;
+				foreach ($nsd as $key => $val) {
+					
+						switch ($key)
+						{
+							case 'Firstname' :
+								$f_name = $val;
+								break;
+							case 'Lastname' :
+								$l_name = $val;
+								break;
+							case 'Tel' :
+								$Tel = $val;
+								break;
+							case 'Email' :
+								$Email = $val;
+								break;
+							case 'Nickname' :
+								$Nickname = $val;
+								break;
+						}
+					
+				}
+				// print_r($nsd); 
+				if($comm == "Firstname")
+				{
+					if($filter[1] == $f_name)
+					{
+						$chk = 'X';
+					}
+				}
+				else
+				{
+					if($filter[1] == $$Nickname)
+					{
+						$chk = 'X';
+					}
+				}
+				
+				if($chk == '')
+				{
+					$f_name = '';
+				}
 			}
 		}
 		if( $f_name == null)
