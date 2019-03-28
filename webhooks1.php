@@ -547,7 +547,7 @@
 				}
 				else
 				{
-					if($filter[1] == $$Nickname)
+					if($filter[1] == $Nickname)
 					{
 						$chk = 'X';
 					}
