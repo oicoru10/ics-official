@@ -408,7 +408,7 @@
 		   // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 		   // $arrayHeader_od[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
 			
-		   $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $url_od = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
 		   // $url_od = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
 		   $ch_od = curl_init($url_od);
 		   curl_setopt($ch_od, CURLOPT_RETURNTRANSFER, true);
@@ -486,7 +486,7 @@
 		   // $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 		   // $arrayHeader_od[] = "Authorization: Basic " .base64_encode("thanagone.ku:p@ssw0rd");
 			
-		   $url = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
+		   $url_od = 'http://thanagone.ku:p%40ssw0rd@vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
 		   // $url_od = 'http://vms4ics.ics-th.com:8000/sap/opu/odata/sap/ZPROFILE_SRV/GetEmployeeListSet';
 		   $ch_od = curl_init($url_od);
 		   curl_setopt($ch_od, CURLOPT_RETURNTRANSFER, true);
